@@ -174,14 +174,12 @@ export const Evidence: React.FC = () => {
                 <header className="case-card-header">
                   <div className="case-identity">
                     <span className="case-badge">Claim #{c.claim_id}</span>
-                    <span className="case-slug">{c.case_name}</span>
                   </div>
                   <div className="case-verdict-group">
                     <span className={`verdict-pill verdict-${c.verdict.toLowerCase()}`}>
                       {c.verdict}
                     </span>
                     <span className="attempts-pill">Attempt {c.attempts} of 3</span>
-                    <span className="latency-pill">{c.latency_sec}s</span>
                   </div>
                 </header>
 

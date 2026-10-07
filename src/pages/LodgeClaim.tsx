@@ -104,7 +104,7 @@ export const LodgeClaim: React.FC = () => {
   return (
     <div className="page-container page-lodge-claim">
       <div className="breadcrumb-nav">
-        <Link to="/" className="breadcrumb-link">
+        <Link to="/app" className="breadcrumb-link">
           &larr; Back to recent claims
         </Link>
       </div>

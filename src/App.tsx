@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { WalletProvider } from './context/WalletContext';
 import { Navbar } from './components/Navbar';
+import { LandingPage } from './components/landing/LandingPage';
 import { Home } from './pages/Home';
 import { ClaimDetail } from './pages/ClaimDetail';
 import { LodgeClaim } from './pages/LodgeClaim';
@@ -9,31 +10,50 @@ import { MyClaims } from './pages/MyClaims';
 import { Evidence } from './pages/Evidence';
 import { About } from './pages/About';
 
+const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <div className="app-layout">
+      <Navbar />
+      <main className="main-content" id="main-content">
+        {children}
+      </main>
+      <footer className="site-footer">
+        <div className="footer-container">
+          <p className="footer-copy">
+            Citation Court &mdash; Preview on GenLayer Studionet (Chain ID 61999). Mechanical citation grounding verification.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
 export const App: React.FC = () => {
   return (
     <WalletProvider>
       <BrowserRouter>
-        <div className="app-layout">
-          <Navbar />
-          <main className="main-content" id="main-content">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/claim/:id" element={<ClaimDetail />} />
-              <Route path="/new" element={<LodgeClaim />} />
-              <Route path="/mine" element={<MyClaims />} />
-              <Route path="/evidence" element={<Evidence />} />
-              <Route path="/about" element={<About />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </main>
-          <footer className="site-footer">
-            <div className="footer-container">
-              <p className="footer-copy">
-                Citation Court &mdash; Preview on GenLayer Studionet (Chain ID 61999). Mechanical citation grounding verification.
-              </p>
-            </div>
-          </footer>
-        </div>
+        <Routes>
+          {/* Standalone Marketing / Protocol Landing Page */}
+          <Route path="/" element={<LandingPage />} />
+
+          {/* Functional Citation Court Application at /app */}
+          <Route path="/app" element={<AppLayout><Home /></AppLayout>} />
+          <Route path="/app/claim/:id" element={<AppLayout><ClaimDetail /></AppLayout>} />
+          <Route path="/app/new" element={<AppLayout><LodgeClaim /></AppLayout>} />
+          <Route path="/app/mine" element={<AppLayout><MyClaims /></AppLayout>} />
+          <Route path="/app/evidence" element={<AppLayout><Evidence /></AppLayout>} />
+          <Route path="/app/about" element={<AppLayout><About /></AppLayout>} />
+
+          {/* Functional Application Routes Preserved */}
+          <Route path="/claim/:id" element={<AppLayout><ClaimDetail /></AppLayout>} />
+          <Route path="/new" element={<AppLayout><LodgeClaim /></AppLayout>} />
+          <Route path="/mine" element={<AppLayout><MyClaims /></AppLayout>} />
+          <Route path="/evidence" element={<AppLayout><Evidence /></AppLayout>} />
+          <Route path="/about" element={<AppLayout><About /></AppLayout>} />
+
+          {/* Fallback */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </BrowserRouter>
     </WalletProvider>
   );

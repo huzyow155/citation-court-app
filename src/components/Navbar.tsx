@@ -24,7 +24,7 @@ export const Navbar: React.FC = () => {
     <header className="site-header">
       <div className="header-container">
         <div className="brand-group">
-          <Link to="/" className="brand-title">
+          <Link to="/app" className="brand-title">
             Citation Court
           </Link>
           <span className="status-badge" title="Deployed on GenLayer Studionet">
@@ -34,7 +34,7 @@ export const Navbar: React.FC = () => {
 
         <nav className="site-nav" aria-label="Main navigation">
           <NavLink
-            to="/"
+            to="/app"
             end
             className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
           >

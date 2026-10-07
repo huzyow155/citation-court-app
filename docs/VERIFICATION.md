@@ -26,7 +26,7 @@ curl -s -X POST https://studio.genlayer.com/api \
 ```
 **Expected Output Record**:
 ```json
-{"contradicts":2,"not_addressed":2,"supports":3,"total_claims":9,"total_judgments":10,"unreadable":3}
+{"contradicts":2,"not_addressed":2,"supports":4,"total_claims":10,"total_judgments":11,"unreadable":3}
 ```
 
 ---

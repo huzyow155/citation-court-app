@@ -27,7 +27,7 @@ Citation Court provides a decentralized verification flow on GenLayer:
 4. **Equivalence Consensus**: Independent LLMs run by validators evaluate semantic alignment. If a majority agrees, the verdict is recorded on-chain.
 5. **No Wallet Barrier for Readers**: Anyone can browse claims, rulings, and consensus evidence without connecting a wallet. Submitting or judging claims requires an EIP-1193 browser wallet (such as MetaMask; note that actual in-browser wallet interaction has not been tested end-to-end, writes were tested via Node scripts with throwaway keys).
 
-The on-chain store contains 8 baseline reference runs (Claims 1 through 8, representing test Cases A to H); claims after that are test or user-lodged, notably Claim 9 which is the dApp E2E write test run (`"Project Nova quarterly revenue reached $14.2 million representing an increase of 42 percent."` against `supports.md`, verdict: `SUPPORTS`). The current on-chain tally is 9 claims registered across 10 validator evaluations (`supports: 3`, `contradicts: 2`, `not_addressed: 2`, `unreadable: 3`).
+The on-chain store contains 8 baseline reference runs (Claims 1 through 8, representing test Cases A to H); claims after that are test or user-lodged, notably Claim 9 which is the dApp E2E write test run (`"Project Nova quarterly revenue reached $14.2 million representing an increase of 42 percent."` against `supports.md`, verdict: `SUPPORTS`) and Claim 10 (`"Earth is the third planet from the Sun and the only astronomical object known to harbor life."`, verdict: `SUPPORTS`). The current on-chain tally is 10 claims registered across 11 validator evaluations (`supports: 4`, `contradicts: 2`, `not_addressed: 2`, `unreadable: 3`).
 
 ---
 

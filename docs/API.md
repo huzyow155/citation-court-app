@@ -76,9 +76,9 @@ Returns the most recent claim ID lodged by the given address, or empty string if
 Returns platform aggregate statistics:
 ```json
 {
-  "total_claims": 9,
-  "total_judgments": 10,
-  "supports": 3,
+  "total_claims": 10,
+  "total_judgments": 11,
+  "supports": 4,
   "contradicts": 2,
   "not_addressed": 2,
   "unreadable": 3

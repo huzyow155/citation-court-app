@@ -5,19 +5,10 @@
     "summary": {
       "minor": 0,
       "moderate": 0,
-      "serious": 8,
+      "serious": 0,
       "critical": 0
     },
-    "violationsDetail": [
-      {
-        "id": "color-contrast",
-        "impact": "serious",
-        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "help": "Elements must meet minimum color contrast ratio thresholds",
-        "nodesCount": 8,
-        "sampleNode": ".cc-meta-badge:nth-child(1) > .cc-meta-title"
-      }
-    ]
+    "violationsDetail": []
   },
   {
     "route": "Home (/app)",
@@ -69,19 +60,10 @@
     "summary": {
       "minor": 0,
       "moderate": 0,
-      "serious": 8,
+      "serious": 0,
       "critical": 0
     },
-    "violationsDetail": [
-      {
-        "id": "color-contrast",
-        "impact": "serious",
-        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "help": "Elements must meet minimum color contrast ratio thresholds",
-        "nodesCount": 8,
-        "sampleNode": ".cc-meta-badge:nth-child(1) > .cc-meta-title"
-      }
-    ]
+    "violationsDetail": []
   },
   {
     "route": "Home (/app)",

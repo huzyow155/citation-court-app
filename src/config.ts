@@ -49,3 +49,16 @@ export function getAddressExplorerUrl(address: string): string {
 export function getContractExplorerUrl(): string {
   return getAddressExplorerUrl(CONFIG.citationCourtAddress);
 }
+
+export function isValidAddress(address: string): boolean {
+  return typeof address === 'string' && /^0x[0-9a-fA-F]{40}$/.test(address);
+}
+
+export function isValidHash(hash: string): boolean {
+  return typeof hash === 'string' && /^0x[0-9a-fA-F]{64}$/.test(hash);
+}
+
+export function formatShortHash(hash: string, start = 8, end = 6): string {
+  if (!hash || hash.length <= start + end) return hash;
+  return `${hash.slice(0, start)}...${hash.slice(-end)}`;
+}

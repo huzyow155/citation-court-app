@@ -178,6 +178,27 @@ We systematically examined the specification against the banned clichés in the 
 ---
 
 ## Pass 3: Post-Implementation Design Critique Record
-*(Will be updated during Milestone D4 after reviewing real screenshots)*
-- **Screen Review (1280px & 390px)**: Scheduled during Milestone D4.
-- **Accessory Removed**: Recorded during Milestone D4 review.
+
+### 1. Screenshot Review (1280px Desktop & 390px Mobile)
+Captured across all 7 routes in incognito mode with no wallet extension connected:
+- **Home (`home_desktop_1280.png`, `home_mobile_390.png`)**:
+  - The editorial claim ledger renders claims directly with their authentic proofreader marks (yellow highlighter for `SUPPORTS`, strike-through for `CONTRADICTS`, dotted underline with superscript `[not addressed]` for `NOT_ADDRESSED`, and solid charcoal redaction tape for `UNREADABLE`).
+  - The right-hand margin column maintains quiet, balanced metadata (host domain, attempt counts, verdict label) on desktop and folds cleanly underneath each claim on 390px mobile.
+- **Claim Detail (`claim_1_desktop_1280.png`, `claim_8_desktop_1280.png`, `claim_1_mobile_390.png`, `claim_8_mobile_390.png`)**:
+  - The claim sentence is the prominent hero element.
+  - The two-column grounding scope guide ("What this verdict means" vs "What this verdict does NOT mean") clearly separates physical proof from real-world claims.
+- **Evidence (`evidence_desktop_1280.png`, `evidence_mobile_390.png`)**:
+  - Clear presentation of all 8 reference cases, latency benchmarks, receipt validation rules, and RPC snippet.
+- **Lodge Claim (`lodge_desktop_1280.png`, `lodge_mobile_390.png`)**:
+  - Clean form with live character counters, instant rule validation feedback, and clear explanation of smart contract authority.
+
+### 2. Accessory Removed After Visual Review
+- **Element Cut**: Internal fixture slug badge (`case_a_supports`, `case_b_contradicts`, etc.) and per-card latency pill tags (`15.123s`, `15.519s`) on the individual Evidence reference cards.
+- **Rationale**: The Evidence page already includes a comprehensive benchmark table summarizing mean latencies and ranges for both execution paths. Repeating technical fixture slugs and microsecond latency pills in every reference case header added visual clutter and made the cards resemble developer test runners rather than a calm, authoritative public legal record. Removing them restored the clean focus to the claim and verdict.
+
+### 3. Accessibility & Quality Floor Verification
+- **Responsive Layout**: Verified down to 360px viewport; all tables and monospace hashes scroll horizontally without overflowing the page container.
+- **Keyboard Navigation**: Distinct high-contrast 2px ink focus rings (`outline: 2px solid #1e3a8a; outline-offset: 2px`) on all interactive buttons, links, and form fields.
+- **Form Labeling**: Every input and textarea contains an explicit `<label htmlFor="...">` and `<p className="field-hint">`.
+- **Color Contrast**: Main body text contrast against `--color-surface` (`#f6f8fa`) is `13.1:1` (WCAG AAA); ink interactive elements have `8.8:1`; red correction text has `5.9:1` (exceeds WCAG AA 4.5:1 floor).
+- **Reduced Motion**: All animations wrapped in `@media (prefers-reduced-motion: no-preference)`; users with reduced motion preferences experience instantaneous rendering without transitions.

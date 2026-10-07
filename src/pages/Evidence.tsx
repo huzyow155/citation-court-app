@@ -3,7 +3,7 @@ import evidenceData from '../data/evidence.json';
 import { CopyIcon, CheckIcon, ExternalLinkIcon } from '../components/Icons';
 import { MarkedClaim } from '../components/MarkedClaim';
 import type { Verdict } from '../types';
-import { CONFIG, getContractExplorerUrl, getAddressExplorerUrl, getTxExplorerUrl } from '../config';
+import { CONFIG, getContractExplorerUrl, getAddressExplorerUrl } from '../config';
 
 export const Evidence: React.FC = () => {
   const [copiedHash, setCopiedHash] = useState<string | null>(null);
@@ -242,13 +242,13 @@ export const Evidence: React.FC = () => {
                       {copiedHash === `judge-${c.claim_id}` ? <CheckIcon /> : <CopyIcon />}
                     </button>
                     <a
-                      href={getTxExplorerUrl(c.judge_tx)}
+                      href={getContractExplorerUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="explorer-link-inline"
-                      title="View transaction on explorer"
+                      title="View contract on explorer"
                     >
-                      Explorer <ExternalLinkIcon />
+                      Contract <ExternalLinkIcon />
                     </a>
                   </div>
                 </div>

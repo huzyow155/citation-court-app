@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const DEMO_STATES = [
   { id: 1, label: 'CLAIM RECEIVED', desc: 'Contract validates statement length (105 chars) and URL scheme.' },
   { id: 2, label: 'SOURCE CHECKED', desc: 'Validators independently retrieve https://en.wikipedia.org/wiki/Earth.' },
-  { id: 3, label: 'VALIDATORS ACTIVE', desc: 'Multi-node body text normalization and verbatim quote substring search.' },
+  { id: 3, label: 'VALIDATORS ACTIVE', desc: 'Multi-node body text normalization and extracted quote substring search.' },
   { id: 4, label: 'CONSENSUS REACHED', desc: 'Equivalence Principle convergence: majority agreement formed.' },
   { id: 5, label: 'VERDICT: SUPPORTS', desc: 'Normalized passage verified in source body text.' },
   { id: 6, label: 'RECORDED ON-CHAIN', desc: 'Ruling and attempt counts committed to GenVM contract state.' },

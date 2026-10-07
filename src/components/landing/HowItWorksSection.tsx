@@ -21,7 +21,7 @@ const STEPS: Step[] = [
     title: 'SOURCE',
     action: 'Bind to HTTPS evidence',
     description: 'The claim links to an accessible public webpage. Private loopbacks, IP literals, and credentials are rejected at the contract boundary.',
-    technicalNote: 'Scheme: HTTP/HTTPS (max 300 chars)',
+    technicalNote: 'Scheme: HTTPS (max 300 chars)',
   },
   {
     number: '03',
@@ -34,7 +34,7 @@ const STEPS: Step[] = [
     number: '04',
     title: 'CONSENSUS',
     action: 'Equivalence Principle convergence',
-    description: 'Independent LLMs evaluate semantic alignment. A quote must exist verbatim in the page text to sustain a SUPPORTS or CONTRADICTS ruling.',
+    description: 'Independent LLMs evaluate semantic alignment. The extracted quote must match the normalized page body text to sustain a SUPPORTS or CONTRADICTS ruling.',
     technicalNote: 'gl.eq_principle.strict_eq()',
   },
   {

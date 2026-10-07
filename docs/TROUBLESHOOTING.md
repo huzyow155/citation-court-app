@@ -82,7 +82,7 @@ If you refresh the browser or navigate away while a judgment is in progress:
 - `claim length below minimum 20 characters`: Claims must be at least 20 characters long.
 - `claim length exceeds maximum 400 characters`: Claims must not exceed 400 characters.
 - `source url exceeds maximum 300 characters`: The URL is too long.
-- `unsupported url scheme`: The URL must start with `http://` or `https://`.
+- `url scheme must be https`: The source URL must start with `https://`.
 - `ip literal hosts not permitted`: Numeric IPv4 and IPv6 hosts are disallowed for safety.
 - `localhost and loopback hosts not permitted`: Private network URLs cannot be evaluated.
 - `userinfo in url not permitted`: URLs containing credentials (e.g., `user:pass@`) are rejected.

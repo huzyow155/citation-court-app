@@ -318,10 +318,10 @@ export const ClaimDetail: React.FC = () => {
                   <div className="waiting-spinner-track" />
                   <div className="waiting-text-group">
                     <p className="waiting-title">Evaluating claim on GenLayer Studionet...</p>
-                    <p className="waiting-time">Elapsed time: {elapsedSec}s (measured range: 9.4s – 25.4s, n=9)</p>
-                    {elapsedSec > 26 && (
+                    <p className="waiting-time">Elapsed time: {elapsedSec}s</p>
+                    {elapsedSec > 30 && (
                       <p className="waiting-longer-notice">
-                        Taking longer than measured runs (measured maximum: 25.4s, n=9). Waiting for consensus receipt...
+                        Still waiting for consensus receipt on GenLayer Studionet. Multi-node web retrieval and validator LLM evaluation are in progress...
                       </p>
                     )}
                     <p className="waiting-subtext">
@@ -369,9 +369,9 @@ export const ClaimDetail: React.FC = () => {
                   <h3 className="scope-col-title">What this verdict means</h3>
                   <p>
                     {ruling?.verdict === 'SUPPORTS' &&
-                      'Validators fetched the webpage and confirmed verbatim normalized passage text supporting the claim.'}
+                      'Validators fetched the webpage and confirmed normalized passage text supporting the claim.'}
                     {ruling?.verdict === 'CONTRADICTS' &&
-                      'Validators fetched the webpage and confirmed verbatim normalized passage text that directly contradicts the claim assertion.'}
+                      'Validators fetched the webpage and confirmed normalized passage text that directly contradicts the claim assertion.'}
                     {ruling?.verdict === 'NOT_ADDRESSED' &&
                       'Validators fetched the webpage but found neither supporting nor contradicting statements for this specific claim.'}
                     {ruling?.verdict === 'UNREADABLE' &&

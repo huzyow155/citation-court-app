@@ -6,7 +6,7 @@ const PRINCIPLES = [
     title: 'Evidence Grounding',
     subtitle: 'Mechanical quote presence',
     description:
-      'A claim cannot be ruled SUPPORTS or CONTRADICTS purely on speculative reasoning. The evaluating model must extract a passage that exists verbatim in the retrieved page after case, whitespace, and punctuation normalization.',
+      'A claim cannot be ruled SUPPORTS or CONTRADICTS purely on speculative reasoning. The evaluating model must extract a passage that matches the retrieved page text after case, whitespace, and punctuation normalization.',
   },
   {
     number: '02',

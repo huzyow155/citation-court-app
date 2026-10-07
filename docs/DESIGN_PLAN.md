@@ -120,7 +120,7 @@ Motion: When a verdict arrives, the mark transitions in once. `prefers-reduced-m
 |                                                                 Evaluated by nodes    |
 |   What this verdict means:                                                            |
 |   The consensus validators fetched the source webpage and       Contract:             |
-|   located verbatim normalized passage text supporting the       0x58aDf2Fd...8CFa5    |
+|   located normalized passage text supporting the                0x58aDf2Fd...8CFa5    |
 |   claim sentence.                                               [Explorer Address]    |
 |                                                                                       |
 |   What this verdict does NOT mean:                                                    |
@@ -147,7 +147,7 @@ Motion: When a verdict arrives, the mark transitions in once. `prefers-reduced-m
 | https://en.wikipedia.org/wiki/Earth |
 |                                     |
 | Scope & Grounding:                  |
-| Verifies verbatim normalized quote  |
+| Verifies normalized quote           |
 | text presence on page. Does not     |
 | prove source authority or truth.    |
 |                                     |

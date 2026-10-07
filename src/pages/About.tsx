@@ -29,7 +29,7 @@ export const About: React.FC = () => {
             <strong>Equivalence Evaluation</strong>: Each validator assesses whether the extracted text supports, contradicts, or does not address the claim.
           </li>
           <li>
-            <strong>Verbatim Normalization Defense</strong>: To defend against hallucination or prompt injection in page contents, an evaluation of <code>SUPPORTS</code> or <code>CONTRADICTS</code> is accepted when the validator extracts a verbatim passage quote that appears in the page text after lowercase, whitespace, and punctuation normalization. If the quote cannot be matched mechanically, the evaluation is downgraded to <code>NOT_ADDRESSED</code>.
+            <strong>Quote Normalization Defense</strong>: To defend against hallucination or prompt injection in page contents, an evaluation of <code>SUPPORTS</code> or <code>CONTRADICTS</code> is accepted when the validator extracts a passage quote that appears in the page text after lowercase, whitespace, and punctuation normalization. If the quote cannot be matched mechanically, the evaluation is downgraded to <code>NOT_ADDRESSED</code>.
           </li>
           <li>
             <strong>Consensus Recording</strong>: If a majority of validators agree, the resulting verdict (<code>SUPPORTS</code>, <code>CONTRADICTS</code>, <code>NOT_ADDRESSED</code>, or <code>UNREADABLE</code>) is permanently recorded in smart contract storage.
@@ -43,7 +43,7 @@ export const About: React.FC = () => {
         <div className="callout-box">
           <ul className="bullet-list">
             <li>
-              <strong>No Truth or Authority Verification</strong>: Citation Court does NOT evaluate whether a claim is an objective fact in reality, nor does it evaluate whether the cited website is credible, authoritative, or trustworthy. It verifies whether the page text contains verbatim textual evidence backing the claim.
+              <strong>No Truth or Authority Verification</strong>: Citation Court does NOT evaluate whether a claim is an objective fact in reality, nor does it evaluate whether the cited website is credible, authoritative, or trustworthy. It verifies whether the page text contains textual evidence backing the claim.
             </li>
             <li>
               <strong>No Validator Quote or Reasoning Storage</strong>: The deployed smart contract stores the verdict string and the attempt count. It does not store the validator's extracted quote or reasoning chain.

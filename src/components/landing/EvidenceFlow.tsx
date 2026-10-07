@@ -95,7 +95,7 @@ export const EvidenceFlow: React.FC = () => {
               className="cc-path-animated cc-path-blue"
             />
 
-            {/* Path 3: Verbatim Passage Check */}
+            {/* Path 3: Normalized Passage Check */}
             <path
               id="path-passage"
               d="M 28 174 C 240 174, 380 240, 500 260"
@@ -274,7 +274,7 @@ export const EvidenceFlow: React.FC = () => {
             {/* Left labels with generous vertical spacing and precise branch alignment */}
             <text x="28" y="50" letterSpacing="0.5px">INPUT: CLAIM_TEXT</text>
             <text x="28" y="106" letterSpacing="0.5px">FETCH: HTTPS/BODY</text>
-            <text x="28" y="162" letterSpacing="0.5px">GROUNDING: NORM_VERBATIM</text>
+            <text x="28" y="162" letterSpacing="0.5px">GROUNDING: NORM_PASSAGE</text>
             <text x="28" y="290" letterSpacing="0.5px">VALIDATOR_NODE_01</text>
             <text x="28" y="334" letterSpacing="0.5px">VALIDATOR_NODE_02</text>
             <text x="28" y="390" letterSpacing="0.5px">VALIDATOR_NODE_03</text>

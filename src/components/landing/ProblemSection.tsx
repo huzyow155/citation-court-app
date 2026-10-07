@@ -100,7 +100,7 @@ export const ProblemSection: React.FC = () => {
                 <span className="cc-item-bullet" aria-hidden="true">&#x2713;</span>
                 <div className="cc-item-content">
                   <strong>Independent validator evaluation</strong>
-                  <span>Body text normalized and checked for verbatim quotes before semantic assessment.</span>
+                  <span>Body text normalized and checked for extracted quotes before semantic assessment.</span>
                 </div>
               </li>
               <li className="cc-list-item cc-item-positive">

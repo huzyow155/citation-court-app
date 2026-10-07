@@ -21,11 +21,11 @@ Independent GenLayer validators fetch the cited URL and evaluate the claim under
 On-chain claims frequently reference off-chain URLs, but smart contracts historically could not inspect external web content without centralized oracle intermediaries. 
 
 Citation Court provides a decentralized verification flow on GenLayer:
-1. **Lodging**: Anyone submits a single-fact claim (20–400 characters) and a source URL (HTTP/HTTPS, up to 300 characters).
+1. **Lodging**: Anyone submits a single-fact claim (20–400 characters) and a source URL (HTTPS, up to 300 characters).
 2. **Independent Retrieval**: Multiple GenLayer validator nodes independently retrieve the raw web page over HTTP.
-3. **HTML Normalization & Grounding**: Validators extract visible body text, normalize whitespace, punctuation, and casing, and verify whether quoted evidence exists verbatim within the retrieved body text. If a quote is absent, the verdict is downgraded to `NOT_ADDRESSED`.
+3. **HTML Normalization & Grounding**: Each validator node fetches the source webpage. The model returns a proposed evaluation label and an extracted quote. Contract execution code then checks whether the extracted quote appears in the page body text after case, whitespace, and typographic punctuation normalization; if the quote is not found, the label is downgraded to `NOT_ADDRESSED`.
 4. **Equivalence Consensus**: Independent LLMs run by validators evaluate semantic alignment. If a majority agrees, the verdict is recorded on-chain.
-5. **No Wallet Barrier for Readers**: Anyone can browse claims, rulings, and consensus evidence without connecting a wallet. Submitting or judging claims requires an EIP-1193 wallet (such as MetaMask or Rabby).
+5. **No Wallet Barrier for Readers**: Anyone can browse claims, rulings, and consensus evidence without connecting a wallet. Submitting or judging claims requires an EIP-1193 browser wallet (such as MetaMask; note that actual in-browser wallet interaction has not been tested end-to-end, writes were tested via Node scripts with throwaway keys).
 
 The on-chain store contains 8 baseline reference runs (Claims 1 through 8, representing test Cases A to H); claims after that are test or user-lodged, notably Claim 9 which is the dApp E2E write test run (`"Project Nova quarterly revenue reached $14.2 million representing an increase of 42 percent."` against `supports.md`, verdict: `SUPPORTS`). The current on-chain tally is 9 claims registered across 10 validator evaluations (`supports: 3`, `contradicts: 2`, `not_addressed: 2`, `unreadable: 3`).
 
@@ -34,7 +34,7 @@ The on-chain store contains 8 baseline reference runs (Claims 1 through 8, repre
 ## 2. Verdicts & Visual Vernacular
 
 The user interface uses proofreading marks to represent consensus outcomes directly on the claim text:
-- **SUPPORTS**: Highlighter marker behind the quote.
+- **SUPPORTS**: Highlighter marker behind the claim sentence (the smart contract stores the verdict string and attempt count without validator excerpts; the application marks the claim sentence itself rather than displaying a validator excerpt).
 - **CONTRADICTS**: Red strike-through line across the sentence.
 - **NOT_ADDRESSED**: Dotted underline with a `[not addressed]` marker.
 - **UNREADABLE**: Redaction bar across the source URL line with a notice that the page could not be read.
@@ -101,21 +101,26 @@ GenLayer periodically resets Studionet state. When this occurs:
 - [`docs/VERIFICATION.md`](./docs/VERIFICATION.md): Step-by-step commands for querying contracts, tally stats, and transaction hashes via curl.
 - [`docs/TROUBLESHOOTING.md`](./docs/TROUBLESHOOTING.md): Network switching, zero-balance gas behavior, consensus timeouts, and reload resumption.
 - [`docs/SDK_NOTES.md`](./docs/SDK_NOTES.md): Technical findings on `genlayer-js@1.1.8`, CORS origin reflections, and receipt triples.
-- [`docs/screenshots/`](./docs/screenshots/): 14 incognito screenshots of all 7 routes without wallet, plus 2 connect modal screenshots labeled mock provider (`connect_modal_mock_provider_desktop_1280.png`, `connect_modal_mock_provider_mobile_390.png`) captured by injecting simulated EIP-6963 provider announcements in headless Chrome.
+- [`docs/screenshots/`](./docs/screenshots/): 16 total screenshots in `docs/screenshots/` (14 incognito screenshots of all 7 routes without wallet at desktop 1280px and mobile 390px, plus 2 connect modal screenshots labeled mock provider [`connect_modal_mock_provider_desktop_1280.png`, `connect_modal_mock_provider_mobile_390.png`] captured by injecting simulated EIP-6963 provider announcements in headless Chrome). Routes covered: `/`, `/claim/1`, `/claim/8`, `/new`, `/mine`, `/evidence`, `/about`.
 
 ---
 
 ## 6. Known Limitations & Unverified Items
 
 ### Known Limitations
-- **Consensus Latency**: Transactions take 8.4 to 25.4 seconds to reach consensus based on real repository benchmarks (n=11, lodge: 8.4s–8.7s [n=2], judge: 9.4s–25.4s [n=9]). UI notices trigger when waiting exceeds measured thresholds (>9s for lodge, >26s for judge).
+- **Consensus Latency**: Transactions take 8.4 to 25.4 seconds to reach consensus based on measured benchmark runs:
+  - Successful lodge write: `8.68s` (n=1)
+  - Failing write (deliberate UserError rejection): `8.44s` (n=1)
+  - Full LLM consensus judgments (contract test cases A–E, H): `12.06s`–`15.52s` (n=6, mean: `14.79s`), plus Claim 9 E2E write test at `25.35s` (n=1, overall LLM mean: `16.30s`, n=7)
+  - Fast UNREADABLE consensus path (HTTP 404, short body < 200 chars): `8.85s`–`12.08s` (n=3, mean: `10.12s`)
+  UI waiting indicators display neutral progress counters without asserting "longer than usual".
 - **Anti-Bot Protections**: Webpages behind Cloudflare Turnstile, CAPTCHAs, or strict anti-scraping paywalls cannot be read by validators and resolve as `UNREADABLE`.
 - **Dynamic Content**: Pages relying entirely on client-side single-page JavaScript rendering may provide insufficient HTML body text to validators, resulting in `UNREADABLE` (sub-200 characters) or `UNDETERMINED`.
 - **Zero Balance Warnings**: While Studionet executes non-payable contract calls with 0 wei balance, a wallet may show a zero-balance warning before submission.
 
 ### Unverified Items
-- **MetaMask GUI Verification**: Automated test suites in this repository run headlessly without browser extension GUIs. The write service flow was confirmed on Studionet via Node scripts with throwaway keys; the MetaMask GUI step has not been tried.
-- **Third-Party Wallet Mobile Apps**: Tested against desktop Chrome and Firefox; hardware wallets (e.g. Ledger via MetaMask) on Studionet have not been independently exercised.
+- **In-Browser Wallet Extensions**: Automated tests and screenshot captures ran in headless Chrome with a simulated mock provider for connect modal screenshots. Transaction write flows were confirmed on Studionet via Node scripts using locally generated throwaway keys. In-browser extension GUIs (such as MetaMask) have not been tested end-to-end.
+- **Alternative Browsers and Wallets**: Tested exclusively in headless Chrome. Other browsers (such as Firefox) and third-party wallet extensions (such as Rabby) have not been tested.
 
 ---
 

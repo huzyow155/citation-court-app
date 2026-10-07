@@ -113,7 +113,7 @@ export const LodgeClaim: React.FC = () => {
         <header className="page-header">
           <h1 className="page-heading">Lodge a Single-Fact Claim</h1>
           <p className="page-subheading">
-            Submit an assertion together with its supporting source URL. GenLayer validators will fetch the webpage and evaluate whether the claim is grounded in verbatim normalized quotes.
+            Submit an assertion together with its supporting source URL. GenLayer validators will fetch the webpage and evaluate whether the claim is grounded in normalized passage text.
           </p>
         </header>
 
@@ -209,10 +209,10 @@ export const LodgeClaim: React.FC = () => {
               <div className="waiting-spinner-track" />
               <div className="waiting-text-group">
                 <p className="waiting-title">Registering claim on GenLayer Studionet...</p>
-                <p className="waiting-time">Elapsed time: {elapsedSec}s (measured range: 8.4s – 8.7s, n=2)</p>
-                {elapsedSec > 9 && (
+                <p className="waiting-time">Elapsed time: {elapsedSec}s</p>
+                {elapsedSec > 15 && (
                   <p className="waiting-longer-notice">
-                    Taking longer than measured runs (measured maximum: 8.7s, n=2). Waiting for consensus receipt...
+                    Still waiting for transaction confirmation on GenLayer Studionet. Validator consensus is in progress...
                   </p>
                 )}
                 {activeTxHash && (

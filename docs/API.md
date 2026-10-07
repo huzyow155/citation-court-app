@@ -61,7 +61,7 @@ Returns JSON-encoded ruling record or empty string if not yet evaluated:
 ```
 
 ### `list_recent(limit: int = 10) -> str`
-Returns a JSON list of recent claim IDs (maximum 20, newest first):
+Returns a JSON list of recent claim IDs (maximum 20, ordered from newest to oldest):
 ```json
 ["9", "8", "7", "6", "5", "4", "3", "2", "1"]
 ```

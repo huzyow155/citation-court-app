@@ -81,7 +81,7 @@ Writing to GenLayer Studionet requires specialized consensus handling.
 - The node responds immediately with an EVM transaction hash (66 hex characters).
 
 ### Step 2: Receipt Polling & Resumption
-- Intelligent contracts require validator consensus and external web fetches. Execution latency typically ranges from 8 to 35 seconds.
+- Intelligent contracts require validator consensus and external web fetches. Execution latency ranges from 8.4 to 25.4 seconds based on real repository benchmarks (n=11, lodge: 8.4s–8.7s [n=2], judge: 9.4s–25.4s [n=9]).
 - The app stores pending transaction records in `localStorage` under `citation_court_pending_tx` with metadata (`hash`, `type`, `claimId`, `timestamp`).
 - If the user reloads or navigates away, the polling resumes upon page load with a 6-minute timeout budget.
 

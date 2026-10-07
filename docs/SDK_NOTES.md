@@ -47,7 +47,7 @@ We probed `https://studio.genlayer.com/api` with `Origin: https://citation-court
 
 ---
 
-## 3. Read-Back Verification (Node.js & Read-Only Client)
+## 3. Read-Back Verification (Node.js & Read Client)
 Probed using `createClient({ chain: studionet })`:
 - `get_stats()`:
   ```json

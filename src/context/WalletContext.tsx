@@ -25,7 +25,7 @@ const TARGET_CHAIN_ID_HEX = '0xf22f'; // 61999
 const TARGET_CHAIN_ID_DEC = 61999;
 
 export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Read-only client is always available without any wallet connection
+  // Read client is always available without any wallet connection
   const [readOnlyClient] = useState(() => createClient({ chain: studionet }));
   const [signerClient, setSignerClient] = useState<any | null>(null);
   const [account, setAccount] = useState<string | null>(null);

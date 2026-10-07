@@ -3,6 +3,7 @@ import {
   CONFIG,
   getAddressExplorerUrl,
   getContractExplorerUrl,
+  getTxExplorerUrl,
   isValidAddress,
   isValidHash,
   formatShortHash,
@@ -21,6 +22,9 @@ describe('CONFIG and helpers', () => {
     const url = getAddressExplorerUrl('0x58aDf2Fd47dD939623BFd66929ec26117fb8CFa5');
     expect(url).toBe('https://explorer-studio.genlayer.com/address/0x58aDf2Fd47dD939623BFd66929ec26117fb8CFa5');
     expect(getContractExplorerUrl()).toBe(url);
+
+    const txUrl = getTxExplorerUrl('0x041b1d4af8da6622451e49b4d045a43a6d87e4b2a63e1d3f544779a0b9fc5cc9');
+    expect(txUrl).toBe('https://explorer-studio.genlayer.com/tx/0x041b1d4af8da6622451e49b4d045a43a6d87e4b2a63e1d3f544779a0b9fc5cc9');
   });
 
   it('validates EVM addresses accurately', () => {

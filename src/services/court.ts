@@ -3,7 +3,7 @@ import { CONFIG } from '../config';
 
 /**
  * Service functions for interacting with CitationCourt.py on GenLayer.
- * Each function accepts an explicit client instance (read-only or signer).
+ * Each function accepts an explicit client instance (read or signer client).
  */
 
 export async function getStats(

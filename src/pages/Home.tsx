@@ -81,7 +81,7 @@ export const Home: React.FC = () => {
 
   return (
     <div className="page-container page-home">
-      <section className="editorial-meta-bar">
+      <section className="ledger-meta-bar">
         <h1 className="page-heading">Recent Evaluated Claims</h1>
         {stats && (
           <p className="platform-tally-line">

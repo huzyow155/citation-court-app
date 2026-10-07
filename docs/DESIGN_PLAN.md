@@ -19,7 +19,7 @@ All text combinations exceed WCAG AA 4.5:1 contrast requirements.
 
 ### 2. Typography
 Self-hosted through `@fontsource` packages:
-- **Claim Text**: `Newsreader` (`@fontsource/newsreader`). Designed for long-form editorial reading; high legibility across multiple lines, human proportion, graceful rendering of italic and punctuation.
+- **Claim Text**: `Newsreader` (`@fontsource/newsreader`). Designed for long-form reading; high legibility across multiple lines, human proportion, graceful rendering of italic and punctuation.
 - **UI Chrome & Navigation**: `Plus Jakarta Sans` (`@fontsource/plus-jakarta-sans`). Crisp geometric grotesque with warm humanist curves, clear number figures, and distinct rhythm. Avoids the overused default `Inter`.
 - **Hashes & Addresses**: `IBM Plex Mono` (`@fontsource/ibm-plex-mono`). Engineered for cryptographic hex strings, with distinct slashed zeros, exact tabular sizing, and readable character distinctions.
 
@@ -32,7 +32,7 @@ Self-hosted through `@fontsource` packages:
 - `Code / Hashes`: `0.8125rem (13px)`, line-height `1.4`, IBM Plex Mono Regular.
 
 ### 4. Layout Concept
-"A disciplined two-column editorial ledger where the primary column holds claims typeset as running prose marked directly with proofreader notations, while a quiet right-hand margin accommodates source provenance, attempt counters, and transaction evidence without ever boxing items into card modules."
+"A disciplined two-column proofreading ledger where the primary column holds claims typeset as running prose marked directly with proofreader notations, while a quiet right-hand margin accommodates source provenance, attempt counters, and transaction evidence without ever boxing items into card modules."
 
 ### 5. Alignment Guidance
 - Reading measure strictly bounded to `68ch` (max-width `720px`) for comfortable reading.
@@ -126,7 +126,7 @@ Motion: When a verdict arrives, the mark transitions in once. `prefers-reduced-m
 |   What this verdict does NOT mean:                                                    |
 |   This does not assert that the source website is trustworthy                         |
 |   or that the claim is an objective cosmic fact. It verifies                         |
-|   mechanical grounding in the cited URL text only.                                    |
+|   mechanical grounding in the cited URL text.                                         |
 |                                                                                       |
 +---------------------------------------------------------------------------------------+
 ```
@@ -167,7 +167,7 @@ We systematically examined the specification against the banned clichés in the 
 | **Warm cream background + serif display + terracotta** | Avoided | Surface is `#f6f8fa` (crisp, cold-neutral proofing paper), not cream/sepia. Primary interactive ink is `#1e3a8a` (blue-black fountain pen), not terracotta or rust. |
 | **Near-black background + acid green/vermilion** | Avoided | Default theme is high-contrast light mode with natural paper ground. No dark cyberpunk aesthetic. |
 | **Broadsheet layout with hairline rules & 0 radius** | Avoided | Not imitating Victorian broadsheets. Clean contemporary margins, `4px` subtle radius on marks and inputs, fluid typography. |
-| **SaaS-card kit (rounded cards, soft shadow, gradients)** | Avoided | Zero card containers. Claims are formatted as editorial paragraphs with margin notes separated by whitespace and clean border rules. |
+| **SaaS-card kit (rounded cards, soft shadow, gradients)** | Avoided | Zero card containers. Claims are formatted as running prose paragraphs with margin notes separated by whitespace and clean border rules. |
 | **Template chrome (tracked ALL-CAPS eyebrows, middle dots)** | Avoided | All titles and labels use sentence case. No `L A T E S T  U P D A T E` tracking. No floating middle-dot separators (`•`). |
 | **"WORD - fragment" labels & dangling arrows** | Avoided | Links and buttons have clean, actionable sentence-case copy ("Judge this claim", "View record"), without generic `->` suffix spam. |
 | **Purple/blue gradients & glass blur panels** | Avoided | Zero CSS gradients. Zero `backdrop-filter: blur`. Flat, honest surface rendering. |
@@ -182,7 +182,7 @@ We systematically examined the specification against the banned clichés in the 
 ### 1. Screenshot Review (1280px Desktop & 390px Mobile)
 Captured across all 7 routes in incognito mode with no wallet extension connected:
 - **Home (`home_desktop_1280.png`, `home_mobile_390.png`)**:
-  - The editorial claim ledger renders claims directly with their authentic proofreader marks (yellow highlighter for `SUPPORTS`, strike-through for `CONTRADICTS`, dotted underline with superscript `[not addressed]` for `NOT_ADDRESSED`, and solid charcoal redaction tape for `UNREADABLE`).
+  - The proofreading claim ledger renders claims directly with their authentic proofreader marks (yellow highlighter for `SUPPORTS`, strike-through for `CONTRADICTS`, dotted underline with superscript `[not addressed]` for `NOT_ADDRESSED`, and solid charcoal redaction tape for `UNREADABLE`).
   - The right-hand margin column maintains quiet, balanced metadata (host domain, attempt counts, verdict label) on desktop and folds cleanly underneath each claim on 390px mobile.
 - **Claim Detail (`claim_1_desktop_1280.png`, `claim_8_desktop_1280.png`, `claim_1_mobile_390.png`, `claim_8_mobile_390.png`)**:
   - The claim sentence is the prominent hero element.

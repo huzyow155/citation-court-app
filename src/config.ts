@@ -50,6 +50,10 @@ export function getContractExplorerUrl(): string {
   return getAddressExplorerUrl(CONFIG.citationCourtAddress);
 }
 
+export function getTxExplorerUrl(txHash: string): string {
+  return `${CONFIG.explorerBaseUrl}/tx/${txHash}`;
+}
+
 export function isValidAddress(address: string): boolean {
   return typeof address === 'string' && /^0x[0-9a-fA-F]{40}$/.test(address);
 }

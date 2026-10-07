@@ -1,7 +1,7 @@
 /* ==========================================================================
    Citation Court — Design System & Stylesheet
    Strictly based on docs/DESIGN_PLAN.md proofreading vernacular.
-   Plain CSS with custom properties only (no Tailwind, no UI libraries).
+   Plain CSS with custom properties (no Tailwind, no UI libraries).
    ========================================================================== */
 
 :root {
@@ -348,7 +348,7 @@ body {
 /* ==========================================================================
    Home Screen & Claim Ledger List
    ========================================================================== */
-.editorial-meta-bar {
+.ledger-meta-bar {
   padding-bottom: 24px;
   border-bottom: 1px solid var(--color-border);
   margin-bottom: 32px;
@@ -399,7 +399,7 @@ body {
   text-decoration: underline;
 }
 
-/* Ledger List (No Cards, Editorial Rows) */
+/* Ledger List (No Cards, Plain Rows) */
 .claims-ledger-list {
   display: flex;
   flex-direction: column;
@@ -639,6 +639,13 @@ body {
 .waiting-subtext {
   font-size: 0.8125rem;
   color: var(--color-pencil);
+}
+
+.waiting-longer-notice {
+  font-size: 0.8125rem;
+  color: var(--color-contradicts);
+  font-weight: 500;
+  margin-top: 2px;
 }
 
 .tx-hash-row {
@@ -883,7 +890,7 @@ body {
   font-size: 0.9375rem;
 }
 
-.editorial-form {
+.claim-submission-form {
   display: flex;
   flex-direction: column;
   gap: 24px;

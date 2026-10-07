@@ -126,7 +126,7 @@ export const LodgeClaim: React.FC = () => {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="editorial-form">
+        <form onSubmit={handleSubmit} className="claim-submission-form">
           {/* Claim Input */}
           <div className="form-field-group">
             <label htmlFor="claimText" className="field-label">
@@ -209,7 +209,12 @@ export const LodgeClaim: React.FC = () => {
               <div className="waiting-spinner-track" />
               <div className="waiting-text-group">
                 <p className="waiting-title">Registering claim on GenLayer Studionet...</p>
-                <p className="waiting-time">Elapsed time: {elapsedSec}s</p>
+                <p className="waiting-time">Elapsed time: {elapsedSec}s (measured range: 8.4s – 8.7s, n=2)</p>
+                {elapsedSec > 9 && (
+                  <p className="waiting-longer-notice">
+                    Taking longer than measured runs (measured maximum: 8.7s, n=2). Waiting for consensus receipt...
+                  </p>
+                )}
                 {activeTxHash && (
                   <div className="tx-hash-row">
                     <span className="hash-label">Transaction:</span>

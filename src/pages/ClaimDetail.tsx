@@ -302,7 +302,7 @@ export const ClaimDetail: React.FC = () => {
               ) : ruling && ruling.verdict !== 'UNREADABLE' ? (
                 <div className="judgment-settled-box">
                   <p className="settled-text">
-                    Verdict finalized by consensus: <strong>{ruling.verdict}</strong> ({ruling.attempts} of 3 attempts used).
+                    Verdict determined by consensus: <strong>{ruling.verdict}</strong> ({ruling.attempts} of 3 attempts used).
                   </p>
                 </div>
               ) : ruling && ruling.attempts >= 3 ? (
@@ -318,7 +318,12 @@ export const ClaimDetail: React.FC = () => {
                   <div className="waiting-spinner-track" />
                   <div className="waiting-text-group">
                     <p className="waiting-title">Evaluating claim on GenLayer Studionet...</p>
-                    <p className="waiting-time">Elapsed time: {elapsedSec}s (budget: 15–25s)</p>
+                    <p className="waiting-time">Elapsed time: {elapsedSec}s (measured range: 9.4s – 25.4s, n=9)</p>
+                    {elapsedSec > 26 && (
+                      <p className="waiting-longer-notice">
+                        Taking longer than measured runs (measured maximum: 25.4s, n=9). Waiting for consensus receipt...
+                      </p>
+                    )}
                     <p className="waiting-subtext">
                       Independent validators are fetching the source webpage and executing equivalence consensus.
                     </p>

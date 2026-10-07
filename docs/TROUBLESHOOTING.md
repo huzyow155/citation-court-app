@@ -48,14 +48,14 @@ If automatic chain addition via EIP-3085 fails in your wallet, configure the net
 - **Block Explorer URL**: `https://explorer-studio.genlayer.com`
 
 ### Zero Balance Notice
-Studionet allows non-payable transactions (`lodge_claim`, `judge_claim`) from accounts with zero balance (0 GEN). However, some wallet user interfaces display a warning if an account has 0 wei. If prompted, proceed with the transaction submission; Studionet nodes accept the transaction without requiring gas fees.
+Studionet allows non-payable transactions (`lodge_claim`, `judge_claim`) from accounts with zero balance (0 GEN). However, a wallet may show a zero-balance warning if an account has 0 wei. If prompted, proceed with the transaction submission; Studionet nodes accept the transaction without requiring gas fees.
 
 ---
 
 ## 3. Transaction Latency & Consensus Timeouts
 
-### Expected Latency (8 to 35 Seconds)
-Unlike traditional EVM transactions that finalize in 2–12 seconds, GenLayer transactions require validator nodes to:
+### Expected Latency (8.4 to 25.4 Seconds, n=11)
+Based on repository benchmarks across 11 measured transactions (lodge: 8.4s–8.7s [n=2], judge: 9.4s–25.4s [n=9]), GenLayer transactions require validator nodes to:
 1. Make external HTTP requests to fetch the referenced URL.
 2. Normalize whitespace, punctuation, and casing from the HTML body.
 3. Run equivalence prompts through validator LLMs.

@@ -144,7 +144,7 @@ Inspected `genlayer-js@1.1.8` source (`node_modules/genlayer-js/dist/index.js`):
    - This prevents conflict when multiple extensions are installed.
 
 4. **Receipt Success Rule**:
-   A transaction succeeded if and only if:
+   A transaction succeeded when:
    `status_name === "ACCEPTED" || status_name === "FINALIZED"` AND
    `result_name === "MAJORITY_AGREE"` AND
    `consensus_data.leader_receipt[0].execution_result === "SUCCESS"`.

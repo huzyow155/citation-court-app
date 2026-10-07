@@ -140,7 +140,7 @@ export const Evidence: React.FC = () => {
         <h2 className="section-title">Receipt Success Evaluation Rule</h2>
         <div className="callout-box">
           <p>
-            On GenLayer Studionet, a transaction is validly accepted if and only if all three receipt properties hold:
+            On GenLayer Studionet, a transaction is validly accepted when all three receipt properties hold:
           </p>
           <ol className="rule-list">
             <li>

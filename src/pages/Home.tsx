@@ -123,7 +123,7 @@ export const Home: React.FC = () => {
         <div className="state-panel empty-panel">
           <p>No claims found on-chain yet.</p>
           <Link to="/new" className="action-link-primary">
-            Lodge the first claim
+            Lodge a claim
           </Link>
         </div>
       )}

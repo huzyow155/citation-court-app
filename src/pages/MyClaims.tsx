@@ -94,7 +94,7 @@ export const MyClaims: React.FC = () => {
         <div className="state-panel empty-panel">
           <p>You have not lodged any claims with this address yet.</p>
           <Link to="/new" className="action-link-primary">
-            Lodge your first claim
+            Lodge a claim
           </Link>
         </div>
       )}

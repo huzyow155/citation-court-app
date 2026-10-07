@@ -378,7 +378,7 @@ export const ClaimDetail: React.FC = () => {
                 <div className="scope-col scope-negative">
                   <h3 className="scope-col-title">What this verdict does NOT mean</h3>
                   <p>
-                    This contract does NOT verify whether the cited website is an authoritative, trustworthy, or truthful source. Nor does it establish whether the claim is objectively true in reality. It verifies only mechanical quote presence on the page text.
+                    This contract does NOT verify whether the cited website is an authoritative, trustworthy, or truthful source. Nor does it establish whether the claim is objectively true in reality. It verifies mechanical quote presence on the page text.
                   </p>
                 </div>
               </div>

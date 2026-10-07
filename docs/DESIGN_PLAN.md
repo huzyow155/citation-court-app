@@ -190,7 +190,7 @@ Captured across all 7 routes in incognito mode with no wallet extension connecte
 - **Evidence (`evidence_desktop_1280.png`, `evidence_mobile_390.png`)**:
   - Clear presentation of all 8 reference cases, latency benchmarks, receipt validation rules, and RPC snippet.
 - **Lodge Claim (`lodge_desktop_1280.png`, `lodge_mobile_390.png`)**:
-  - Clean form with live character counters, instant rule validation feedback, and clear explanation of smart contract authority.
+  - Clean form with dynamic character counters, instant rule validation feedback, and clear explanation of smart contract authority.
 
 ### 2. Accessory Removed After Visual Review
 - **Element Cut**: Internal fixture slug badge (`case_a_supports`, `case_b_contradicts`, etc.) and per-card latency pill tags (`15.123s`, `15.519s`) on the individual Evidence reference cards.

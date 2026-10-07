@@ -7,8 +7,9 @@ function getEnvVar(key: string, fallback: string): string {
   if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env[key]) {
     return import.meta.env[key] as string;
   }
-  if (typeof process !== 'undefined' && process.env && process.env[key]) {
-    return process.env[key] as string;
+  const proc = typeof globalThis !== 'undefined' ? (globalThis as any).process : undefined;
+  if (proc && proc.env && proc.env[key]) {
+    return proc.env[key] as string;
   }
   return fallback;
 }

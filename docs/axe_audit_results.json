@@ -1,0 +1,139 @@
+[
+  {
+    "route": "Landing (/)",
+    "viewport": "desktop_1280",
+    "summary": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 12,
+      "critical": 0
+    },
+    "violationsDetail": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodesCount": 12,
+        "sampleNode": ".cc-status-step:nth-child(1) > .cc-step-num"
+      }
+    ]
+  },
+  {
+    "route": "Home (/app)",
+    "viewport": "desktop_1280",
+    "summary": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 0,
+      "critical": 0
+    },
+    "violationsDetail": []
+  },
+  {
+    "route": "Claim (/app/claim/1)",
+    "viewport": "desktop_1280",
+    "summary": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 0,
+      "critical": 0
+    },
+    "violationsDetail": []
+  },
+  {
+    "route": "Lodge (/app/new)",
+    "viewport": "desktop_1280",
+    "summary": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 0,
+      "critical": 0
+    },
+    "violationsDetail": []
+  },
+  {
+    "route": "Evidence (/app/evidence)",
+    "viewport": "desktop_1280",
+    "summary": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 0,
+      "critical": 0
+    },
+    "violationsDetail": []
+  },
+  {
+    "route": "Landing (/)",
+    "viewport": "mobile_390",
+    "summary": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 12,
+      "critical": 0
+    },
+    "violationsDetail": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodesCount": 12,
+        "sampleNode": ".cc-status-step:nth-child(1) > .cc-step-num"
+      }
+    ]
+  },
+  {
+    "route": "Home (/app)",
+    "viewport": "mobile_390",
+    "summary": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 0,
+      "critical": 0
+    },
+    "violationsDetail": []
+  },
+  {
+    "route": "Claim (/app/claim/1)",
+    "viewport": "mobile_390",
+    "summary": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 0,
+      "critical": 0
+    },
+    "violationsDetail": []
+  },
+  {
+    "route": "Lodge (/app/new)",
+    "viewport": "mobile_390",
+    "summary": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 0,
+      "critical": 0
+    },
+    "violationsDetail": []
+  },
+  {
+    "route": "Evidence (/app/evidence)",
+    "viewport": "mobile_390",
+    "summary": {
+      "minor": 0,
+      "moderate": 0,
+      "serious": 1,
+      "critical": 0
+    },
+    "violationsDetail": [
+      {
+        "id": "scrollable-region-focusable",
+        "impact": "serious",
+        "description": "Ensure elements that have scrollable content are accessible by keyboard in Safari",
+        "help": "Scrollable region must have keyboard access",
+        "nodesCount": 1,
+        "sampleNode": "section:nth-child(3) > .specs-table-wrapper"
+      }
+    ]
+  }
+]

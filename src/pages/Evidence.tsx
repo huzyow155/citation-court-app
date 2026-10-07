@@ -37,7 +37,12 @@ export const Evidence: React.FC = () => {
       {/* Contract & Deployment Reference */}
       <section className="evidence-section">
         <h2 className="section-title">Deployment Specification</h2>
-        <div className="specs-table-wrapper">
+        <div
+          className="specs-table-wrapper"
+          tabIndex={0}
+          role="region"
+          aria-label="Deployment specification table"
+        >
           <table className="specs-table">
             <tbody>
               <tr>
@@ -104,7 +109,12 @@ export const Evidence: React.FC = () => {
         <p className="section-intro">
           Latency measured from transaction submission (<code>client.writeContract</code>) to receipt finalization (<code>client.waitForTransactionReceipt</code>) across multi-validator consensus runs on Studionet:
         </p>
-        <div className="specs-table-wrapper">
+        <div
+          className="specs-table-wrapper"
+          tabIndex={0}
+          role="region"
+          aria-label="Measured consensus latencies table"
+        >
           <table className="specs-table">
             <thead>
               <tr>

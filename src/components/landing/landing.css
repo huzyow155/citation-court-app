@@ -411,7 +411,7 @@
   font-family: var(--cc-font-mono);
   font-size: 0.6875rem;
   letter-spacing: 0.05em;
-  color: #888888;
+  color: #555555;
 }
 
 .cc-meta-value {
@@ -907,7 +907,7 @@
 .cc-step-tech-code {
   font-family: var(--cc-font-mono);
   font-size: 0.6875rem;
-  color: #888888;
+  color: #555555;
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1033,7 +1033,7 @@
   font-family: var(--cc-font-mono);
   font-size: 0.6875rem;
   letter-spacing: 0.06em;
-  color: #888888;
+  color: #555555;
 }
 
 .cc-demo-claim-quote {
@@ -1081,7 +1081,7 @@
 .cc-source-status {
   font-family: var(--cc-font-mono);
   font-size: 0.6875rem;
-  color: #888888;
+  color: #555555;
   padding: 2px 6px;
   border-radius: 3px;
   background-color: #ECECED;
@@ -1255,7 +1255,7 @@
 .cc-principle-sub {
   font-family: var(--cc-font-mono);
   font-size: 0.6875rem;
-  color: #888888;
+  color: #555555;
 }
 
 .cc-principle-heading {
@@ -1304,7 +1304,7 @@
 .cc-node-step {
   font-family: var(--cc-font-mono);
   font-size: 0.625rem;
-  color: #888888;
+  color: #555555;
 }
 
 .cc-node-name {
@@ -1386,7 +1386,7 @@
   font-family: var(--cc-font-mono);
   font-size: 0.6875rem;
   letter-spacing: 0.05em;
-  color: #888888;
+  color: #555555;
 }
 
 .cc-telemetry-value-row {
@@ -1489,7 +1489,7 @@
 .cc-cta-footnote {
   font-family: var(--cc-font-mono);
   font-size: 0.75rem;
-  color: #888888;
+  color: #555555;
 }
 
 /* ==========================================================================
@@ -1539,7 +1539,7 @@
   font-family: var(--cc-font-mono);
   font-size: 0.6875rem;
   letter-spacing: 0.05em;
-  color: #888888;
+  color: #555555;
 }
 
 .cc-footer-links-col {
@@ -1552,7 +1552,7 @@
   font-family: var(--cc-font-mono);
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
-  color: #888888;
+  color: #555555;
   margin-bottom: 6px;
 }
 
@@ -1590,7 +1590,7 @@
   flex-wrap: wrap;
   gap: 12px;
   font-size: 0.75rem;
-  color: #888888;
+  color: #555555;
 }
 
 .cc-copyright {

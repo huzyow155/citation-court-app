@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface Step {
   number: string;
@@ -48,9 +48,19 @@ const STEPS: Step[] = [
 
 export const HowItWorksSection: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+
+  // Progressive protocol timeline execution
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % STEPS.length);
+    }, 3400);
+    return () => clearInterval(timer);
+  }, [isPaused]);
 
   return (
-    <section id="how-it-works" className="cc-how-it-works-section" aria-labelledby="how-title">
+    <section id="how-it-works" className="cc-how-it-works-section cc-reveal-section" aria-labelledby="how-title">
       <div className="cc-landing-container">
         {/* Section Header */}
         <div className="cc-section-header">
@@ -70,8 +80,17 @@ export const HowItWorksSection: React.FC = () => {
             return (
               <div
                 key={step.number}
-                className={`cc-step-card ${isSelected ? 'is-selected' : ''}`}
-                onMouseEnter={() => setActiveStep(idx)}
+                className={`cc-step-card cc-reveal-item ${isSelected ? 'is-selected' : ''}`}
+                onMouseEnter={() => {
+                  setActiveStep(idx);
+                  setIsPaused(true);
+                }}
+                onMouseLeave={() => setIsPaused(false)}
+                onFocus={() => {
+                  setActiveStep(idx);
+                  setIsPaused(true);
+                }}
+                onBlur={() => setIsPaused(false)}
                 tabIndex={0}
                 role="region"
                 aria-label={`Step ${step.number}: ${step.title}`}

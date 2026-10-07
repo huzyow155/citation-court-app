@@ -54,6 +54,18 @@
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--cc-silver-subtle);
   transition: border-color 0.2s ease, background-color 0.2s ease;
+  animation: ccNavFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ccNavFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .cc-landing-nav.is-scrolled {
@@ -90,6 +102,7 @@
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--cc-text);
+  white-space: nowrap;
 }
 
 .cc-brand-pill {
@@ -236,6 +249,8 @@
   padding: 28px 24px 20px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.025);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  animation: ccHeroFrameEnter 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  will-change: transform, opacity;
 }
 
 .cc-visual-frame:hover {
@@ -253,6 +268,7 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 20px;
+  animation: ccFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
 }
 
 .cc-kicker-pulse {
@@ -281,12 +297,31 @@
   margin-bottom: 22px;
 }
 
+.cc-headline-line-wrap {
+  display: block;
+  overflow: hidden;
+}
+
+.cc-headline-line {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.cc-line-1 {
+  animation: ccLineReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.48s both;
+}
+
+.cc-line-2 {
+  animation: ccLineReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.62s both;
+}
+
 .cc-hero-subhead {
   font-size: 1.0625rem;
   line-height: 1.6;
   color: var(--cc-text-muted);
   margin-bottom: 34px;
   max-width: 480px;
+  animation: ccFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.76s both;
 }
 
 .cc-hero-cta-group {
@@ -295,6 +330,7 @@
   gap: 16px;
   margin-bottom: 44px;
   flex-wrap: wrap;
+  animation: ccFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.88s both;
 }
 
 .cc-btn-primary {
@@ -312,9 +348,17 @@
   transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
+.cc-btn-primary svg {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .cc-btn-primary:hover {
   background-color: #262626;
   transform: translateY(-1px);
+}
+
+.cc-btn-primary:hover svg {
+  transform: translateX(4px);
 }
 
 .cc-btn-secondary {
@@ -342,12 +386,25 @@
   gap: 16px;
   padding-top: 24px;
   border-top: 1px solid var(--cc-silver-light);
+  animation: ccFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1s both;
 }
 
 .cc-meta-badge {
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+.cc-meta-badge:nth-child(1) {
+  animation: ccFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.04s both;
+}
+
+.cc-meta-badge:nth-child(2) {
+  animation: ccFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.16s both;
+}
+
+.cc-meta-badge:nth-child(3) {
+  animation: ccFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.28s both;
 }
 
 .cc-meta-title {
@@ -361,6 +418,39 @@
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--cc-text);
+}
+
+@keyframes ccHeroFrameEnter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ccLineReveal {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ccFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ==========================================================================
@@ -454,69 +544,65 @@
   to { stroke-dashoffset: -48; }
 }
 
-/* Traveling Packets */
-.cc-packet {
-  opacity: 0;
+/* Connected Traveling Signals & Supports Micro-Interactions */
+.cc-flow-verdict-node {
+  transform-origin: 57px 0px;
+  animation: verdictBadgeAcknowledge 4s ease-in-out infinite;
 }
 
-.cc-packet-1 {
-  animation: packet1 4s ease-in-out infinite;
+@keyframes verdictBadgeAcknowledge {
+  0%, 61% {
+    transform: translate(730px, 260px) scale(1);
+  }
+  65% {
+    transform: translate(730px, 260px) scale(1.02);
+  }
+  73% {
+    transform: translate(730px, 260px) scale(1);
+  }
+  100% {
+    transform: translate(730px, 260px) scale(1);
+  }
 }
 
-@keyframes packet1 {
-  0% { transform: translate(28px, 110px); opacity: 0; }
-  10% { opacity: 1; }
-  50% { transform: translate(425px, 230px); opacity: 1; }
-  80% { transform: translate(620px, 230px); opacity: 1; }
-  90%, 100% { opacity: 0; }
+.cc-verdict-pill-bg {
+  transition: stroke 0.3s ease, stroke-width 0.3s ease;
+  animation: verdictBorderFlash 4s ease-in-out infinite;
 }
 
-.cc-packet-2 {
-  animation: packet2 4s ease-in-out 0.8s infinite;
+@keyframes verdictBorderFlash {
+  0%, 61% {
+    stroke: #D8DADC;
+    stroke-width: 1.25px;
+  }
+  64%, 72% {
+    stroke: #59CDB0;
+    stroke-width: 1.75px;
+  }
+  78%, 100% {
+    stroke: #D8DADC;
+    stroke-width: 1.25px;
+  }
 }
 
-@keyframes packet2 {
-  0% { transform: translate(28px, 295px); opacity: 0; }
-  10% { opacity: 1; }
-  50% { transform: translate(425px, 230px); opacity: 1; }
-  80% { transform: translate(620px, 230px); opacity: 1; }
-  90%, 100% { opacity: 0; }
+.cc-verdict-indicator {
+  transition: fill 0.3s ease, opacity 0.3s ease;
+  animation: verdictDotFlash 4s ease-in-out infinite;
 }
 
-.cc-packet-3 {
-  animation: packet3 4s ease-in-out 1.6s infinite;
-}
-
-@keyframes packet3 {
-  0% { transform: translate(28px, 230px); opacity: 0; }
-  10% { opacity: 1; }
-  50% { transform: translate(425px, 230px); opacity: 1; }
-  80% { transform: translate(620px, 230px); opacity: 1; }
-  90%, 100% { opacity: 0; }
-}
-
-.cc-packet-4 {
-  animation: packet4 4s ease-in-out 2.4s infinite;
-}
-
-@keyframes packet4 {
-  0% { transform: translate(28px, 405px); opacity: 0; }
-  10% { opacity: 1; }
-  50% { transform: translate(425px, 230px); opacity: 1; }
-  80% { transform: translate(620px, 230px); opacity: 1; }
-  90%, 100% { opacity: 0; }
-}
-
-.cc-packet-5 {
-  animation: packet5 4s ease-in-out 3.2s infinite;
-}
-
-@keyframes packet5 {
-  0% { transform: translate(28px, 55px); opacity: 0; }
-  10% { opacity: 1; }
-  50% { transform: translate(425px, 230px); opacity: 1; }
-  80% { transform: translate(620px, 230px); opacity: 1; }
-  90%, 100% { opacity: 0; }
+@keyframes verdictDotFlash {
+  0%, 61% {
+    fill: #59CDB0;
+    opacity: 0.8;
+  }
+  64%, 72% {
+    fill: #3EB897;
+    opacity: 1;
+  }
+  78%, 100% {
+    fill: #59CDB0;
+    opacity: 0.8;
+  }
 }
 
 /* Bottom status track */
@@ -1516,6 +1602,43 @@
 }
 
 /* ==========================================================================
+   SCROLL REVEAL SYSTEM & TIMELINE TRANSITIONS
+   ========================================================================== */
+
+.cc-reveal-section {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.cc-reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cc-reveal-item {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.is-visible .cc-reveal-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.is-visible .cc-reveal-item:nth-child(1) { transition-delay: 0.06s; }
+.is-visible .cc-reveal-item:nth-child(2) { transition-delay: 0.16s; }
+.is-visible .cc-reveal-item:nth-child(3) { transition-delay: 0.26s; }
+.is-visible .cc-reveal-item:nth-child(4) { transition-delay: 0.36s; }
+.is-visible .cc-reveal-item:nth-child(5) { transition-delay: 0.46s; }
+
+.cc-track-progress {
+  transition: width 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
    10. RESPONSIVE DESIGN (Breakpoints: 1024px, 768px, 480px, 390px)
    ========================================================================== */
 
@@ -1635,7 +1758,7 @@
 
   .cc-visual-frame {
     border-radius: 20px;
-    padding: 20px 14px 14px;
+    padding: 16px 12px 14px;
   }
 
   .cc-hero-cta-group {
@@ -1653,6 +1776,62 @@
     flex-direction: column;
     align-items: stretch;
   }
+
+  .cc-flow-top-meta {
+    padding-bottom: 10px;
+  }
+
+  .cc-meta-label {
+    font-size: 0.6875rem;
+  }
+
+  .cc-flow-annotations {
+    font-size: 8px;
+  }
+
+  .cc-flow-passive-paths {
+    opacity: 0.25;
+  }
+}
+
+@media (max-width: 390px) {
+  .cc-brand-name {
+    font-size: 1.125rem;
+  }
+
+  .cc-brand-pill {
+    display: none;
+  }
+
+  .cc-btn-launch {
+    padding: 7px 12px;
+    font-size: 0.75rem;
+  }
+
+  .cc-hero-headline {
+    font-size: 2.15rem;
+  }
+
+  .cc-landing-nav-inner {
+    padding: 12px 16px;
+  }
+
+  .cc-visual-frame {
+    padding: 14px 10px 12px;
+    border-radius: 18px;
+  }
+
+  .cc-status-step {
+    gap: 2px;
+  }
+
+  .cc-step-num {
+    font-size: 0.6875rem;
+  }
+
+  .cc-step-label {
+    font-size: 0.6875rem;
+  }
 }
 
 /* ==========================================================================
@@ -1660,20 +1839,51 @@
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .cc-reveal-section,
+  .cc-reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .cc-visual-frame,
+  .cc-landing-nav,
+  .cc-hero-kicker,
+  .cc-line-1,
+  .cc-line-2,
+  .cc-hero-subhead,
+  .cc-hero-cta-group,
+  .cc-hero-metadata-strip,
+  .cc-meta-badge {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .cc-headline-line-wrap {
+    overflow: visible !important;
+  }
+
   .cc-path-animated,
   .cc-pulse-outer,
   .cc-pulse-mint,
   .cc-path-resolved,
-  .cc-packet-1,
-  .cc-packet-2,
-  .cc-packet-3,
-  .cc-packet-4,
-  .cc-packet-5 {
+  .cc-packet,
+  .cc-verdict-signal-packet,
+  .cc-flow-verdict-node,
+  .cc-verdict-pill-bg,
+  .cc-verdict-indicator {
     animation: none !important;
   }
 
   .cc-packet {
-    display: none;
+    display: none !important;
   }
 
   .cc-step-card,

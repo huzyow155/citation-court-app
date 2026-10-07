@@ -33,7 +33,7 @@ const PRINCIPLES = [
 
 export const ProtocolSection: React.FC = () => {
   return (
-    <section id="principles" className="cc-principles-section" aria-labelledby="principles-title">
+    <section id="principles" className="cc-principles-section cc-reveal-section" aria-labelledby="principles-title">
       <div className="cc-landing-container">
         {/* Section Header */}
         <div className="cc-section-header">

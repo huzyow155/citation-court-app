@@ -2,7 +2,7 @@ import React from 'react';
 
 export const ProblemSection: React.FC = () => {
   return (
-    <section id="protocol" className="cc-problem-section" aria-labelledby="problem-title">
+    <section id="protocol" className="cc-problem-section cc-reveal-section" aria-labelledby="problem-title">
       <div className="cc-landing-container">
         {/* Section Header */}
         <div className="cc-section-header">

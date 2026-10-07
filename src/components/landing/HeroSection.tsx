@@ -28,7 +28,12 @@ export const HeroSection: React.FC = () => {
           </div>
 
           <h1 id="hero-title" className="cc-hero-headline">
-            Evidence deserves a verdict.
+            <span className="cc-headline-line-wrap">
+              <span className="cc-headline-line cc-line-1">Evidence deserves a</span>
+            </span>
+            <span className="cc-headline-line-wrap">
+              <span className="cc-headline-line cc-line-2">verdict.</span>
+            </span>
           </h1>
 
           <p className="cc-hero-subhead">

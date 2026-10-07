@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const FinalCTA: React.FC = () => {
   return (
-    <section className="cc-final-cta-section" aria-labelledby="cta-heading">
+    <section className="cc-final-cta-section cc-reveal-section" aria-labelledby="cta-heading">
       <div className="cc-landing-container">
         <div className="cc-final-cta-card">
           {/* Subtle Accent Glow */}

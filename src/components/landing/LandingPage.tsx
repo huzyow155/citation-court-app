@@ -15,8 +15,33 @@ export const LandingPage: React.FC = () => {
     // Set document title for marketing landing
     const previousTitle = document.title;
     document.title = 'Citation Court — Evidence Deserves a Verdict';
+
+    // Scroll reveal observer for below-the-fold sections
+    if (typeof IntersectionObserver === 'undefined') {
+      const targets = document.querySelectorAll('.cc-reveal-section');
+      targets.forEach((t) => t.classList.add('is-visible'));
+      return () => {
+        document.title = previousTitle;
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    const targets = document.querySelectorAll('.cc-reveal-section');
+    targets.forEach((t) => observer.observe(t));
+
     return () => {
       document.title = previousTitle;
+      targets.forEach((t) => observer.unobserve(t));
     };
   }, []);
 

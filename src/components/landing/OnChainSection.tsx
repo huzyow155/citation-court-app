@@ -3,7 +3,7 @@ import { CONFIG, getContractExplorerUrl, getAddressExplorerUrl } from '../../con
 
 export const OnChainSection: React.FC = () => {
   return (
-    <section className="cc-onchain-section" aria-labelledby="onchain-title">
+    <section className="cc-onchain-section cc-reveal-section" aria-labelledby="onchain-title">
       <div className="cc-landing-container">
         {/* Section Header */}
         <div className="cc-section-header">

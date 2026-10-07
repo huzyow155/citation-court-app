@@ -25,7 +25,7 @@ export const VerificationDemo: React.FC = () => {
   const active = DEMO_STATES[currentState];
 
   return (
-    <section id="verification-demo" className="cc-demo-section" aria-labelledby="demo-title">
+    <section id="verification-demo" className="cc-demo-section cc-reveal-section" aria-labelledby="demo-title">
       <div className="cc-landing-container">
         {/* Section Header */}
         <div className="cc-section-header">

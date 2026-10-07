@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { CitationCourtLogo } from '../CitationCourtLogo';
 
 export const LandingNavbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -27,11 +28,7 @@ export const LandingNavbar: React.FC = () => {
         {/* Brand */}
         <Link to="/" className="cc-landing-brand" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <span className="cc-brand-mark" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M4 6C9 6 12 10 12 12C12 14 15 18 20 18" stroke="#111111" strokeWidth="1.5" strokeLinecap="round" />
-              <path d="M4 18C9 18 12 14 12 12C12 10 15 6 20 6" stroke="#4F8EF7" strokeWidth="1.5" strokeLinecap="round" />
-              <circle cx="12" cy="12" r="2.5" fill="#111111" />
-            </svg>
+            <CitationCourtLogo size={22} />
           </span>
           <span className="cc-brand-name">Citation Court</span>
           <span className="cc-brand-pill">Studionet</span>

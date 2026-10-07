@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%" fill="none">
+  <!-- Citation Court Brand Mark: Converging Evidence Streams into Consensus Nexus -->
+  <path d="M 96 144 C 176 144, 256 216, 256 256 C 256 296, 336 368, 416 368" stroke="#111111" stroke-width="34" stroke-linecap="round"/>
+  <path d="M 96 368 C 176 368, 256 296, 256 256 C 256 216, 336 144, 416 144" stroke="#4F8EF7" stroke-width="34" stroke-linecap="round"/>
+  <circle cx="256" cy="256" r="64" stroke="#59CDB0" stroke-width="10" stroke-dasharray="16 16" fill="none"/>
+  <circle cx="256" cy="256" r="44" fill="#111111"/>
+  <circle cx="256" cy="256" r="14" fill="#FFFFFF"/>
+</svg>

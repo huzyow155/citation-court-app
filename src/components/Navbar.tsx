@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useWallet } from '../context/WalletContext';
+import { CitationCourtLogo } from './CitationCourtLogo';
 
 export const Navbar: React.FC = () => {
   const {
@@ -25,7 +26,8 @@ export const Navbar: React.FC = () => {
       <div className="header-container">
         <div className="brand-group">
           <Link to="/app" className="brand-title">
-            Citation Court
+            <CitationCourtLogo size={20} />
+            <span>Citation Court</span>
           </Link>
           <span className="status-badge" title="Deployed on GenLayer Studionet">
             Preview on Studionet

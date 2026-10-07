@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { CitationCourtLogo } from '../CitationCourtLogo';
 
 export const LandingFooter: React.FC = () => {
   const scrollTo = (id: string) => {
@@ -15,11 +16,7 @@ export const LandingFooter: React.FC = () => {
         {/* Left Branding */}
         <div className="cc-footer-brand-col">
           <Link to="/" className="cc-footer-brand" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M4 6C9 6 12 10 12 12C12 14 15 18 20 18" stroke="#111111" strokeWidth="1.5" strokeLinecap="round" />
-              <path d="M4 18C9 18 12 14 12 12C12 10 15 6 20 6" stroke="#4F8EF7" strokeWidth="1.5" strokeLinecap="round" />
-              <circle cx="12" cy="12" r="2.5" fill="#111111" />
-            </svg>
+            <CitationCourtLogo size={20} />
             <span className="cc-footer-brand-name">Citation Court</span>
           </Link>
           <p className="cc-footer-tagline">

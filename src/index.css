@@ -111,6 +111,9 @@ body {
 }
 
 .brand-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-serif);
   font-size: 1.35rem;
   font-weight: 500;
@@ -120,7 +123,7 @@ body {
 }
 
 .brand-title:hover {
-  color: var(--color-ink);
+  color: var(--color-graphite-light);
 }
 
 .status-badge {
@@ -165,7 +168,7 @@ body {
 }
 
 .btn-connect {
-  background-color: var(--color-ink);
+  background-color: #111111;
   color: #ffffff;
   border: none;
   font-size: 0.875rem;
@@ -178,7 +181,7 @@ body {
 }
 
 .btn-connect:hover:not(:disabled) {
-  background-color: var(--color-ink-hover);
+  background-color: #262626;
 }
 
 .btn-connect:disabled {
@@ -570,7 +573,7 @@ body {
 }
 
 .btn-action-primary {
-  background-color: var(--color-ink);
+  background-color: #111111;
   color: #ffffff;
   border: none;
   font-family: var(--font-sans);
@@ -583,7 +586,7 @@ body {
 }
 
 .btn-action-primary:hover:not(:disabled) {
-  background-color: var(--color-ink-hover);
+  background-color: #262626;
 }
 
 .btn-action-primary:disabled {

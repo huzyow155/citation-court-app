@@ -53,7 +53,7 @@ export const MarkedClaim: React.FC<MarkedClaimProps> = ({
     .join(' ');
 
   return (
-    <span className={containerClasses} aria-label={`${claimText}. ${ariaVerdictLabel}`}>
+    <span className={containerClasses} role="text" aria-label={`${claimText}. ${ariaVerdictLabel}`}>
       <span className={`claim-sentence ${markClassName}`}>
         {claimText}
       </span>

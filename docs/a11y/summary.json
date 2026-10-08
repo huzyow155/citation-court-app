@@ -1,0 +1,212 @@
+{
+  "axeVersion": "4.14.0",
+  "ruleTags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "best-practice"
+  ],
+  "testedAt": "2026-10-08T00:05:37.637Z",
+  "totalAudits": 18,
+  "results": [
+    {
+      "target": "landing",
+      "route": "/",
+      "viewport": "desktop_1280",
+      "resolution": "1280x900",
+      "violations": 0,
+      "incomplete": 1,
+      "passes": 37,
+      "inapplicable": 53,
+      "file": "docs/a11y/landing_desktop_1280.json"
+    },
+    {
+      "target": "app_home",
+      "route": "/app",
+      "viewport": "desktop_1280",
+      "resolution": "1280x900",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 33,
+      "inapplicable": 57,
+      "file": "docs/a11y/app_home_desktop_1280.json"
+    },
+    {
+      "target": "claim_1_supports",
+      "route": "/app/claim/1",
+      "viewport": "desktop_1280",
+      "resolution": "1280x900",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 36,
+      "inapplicable": 54,
+      "file": "docs/a11y/claim_1_supports_desktop_1280.json"
+    },
+    {
+      "target": "claim_6_unreadable",
+      "route": "/app/claim/6",
+      "viewport": "desktop_1280",
+      "resolution": "1280x900",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 36,
+      "inapplicable": 54,
+      "file": "docs/a11y/claim_6_unreadable_desktop_1280.json"
+    },
+    {
+      "target": "lodge_new",
+      "route": "/app/new",
+      "viewport": "desktop_1280",
+      "resolution": "1280x900",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 33,
+      "inapplicable": 57,
+      "file": "docs/a11y/lodge_new_desktop_1280.json"
+    },
+    {
+      "target": "my_claims",
+      "route": "/app/mine",
+      "viewport": "desktop_1280",
+      "resolution": "1280x900",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 29,
+      "inapplicable": 61,
+      "file": "docs/a11y/my_claims_desktop_1280.json"
+    },
+    {
+      "target": "evidence",
+      "route": "/app/evidence",
+      "viewport": "desktop_1280",
+      "resolution": "1280x900",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 43,
+      "inapplicable": 47,
+      "file": "docs/a11y/evidence_desktop_1280.json"
+    },
+    {
+      "target": "about",
+      "route": "/app/about",
+      "viewport": "desktop_1280",
+      "resolution": "1280x900",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 32,
+      "inapplicable": 58,
+      "file": "docs/a11y/about_desktop_1280.json"
+    },
+    {
+      "target": "claim_waiting_state",
+      "route": "/app/claim/1 (waiting)",
+      "viewport": "desktop_1280",
+      "resolution": "1280x900",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 36,
+      "inapplicable": 54,
+      "file": "docs/a11y/claim_waiting_state_desktop_1280.json"
+    },
+    {
+      "target": "landing",
+      "route": "/",
+      "viewport": "mobile_390",
+      "resolution": "390x844",
+      "violations": 0,
+      "incomplete": 1,
+      "passes": 37,
+      "inapplicable": 53,
+      "file": "docs/a11y/landing_mobile_390.json"
+    },
+    {
+      "target": "app_home",
+      "route": "/app",
+      "viewport": "mobile_390",
+      "resolution": "390x844",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 33,
+      "inapplicable": 57,
+      "file": "docs/a11y/app_home_mobile_390.json"
+    },
+    {
+      "target": "claim_1_supports",
+      "route": "/app/claim/1",
+      "viewport": "mobile_390",
+      "resolution": "390x844",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 36,
+      "inapplicable": 54,
+      "file": "docs/a11y/claim_1_supports_mobile_390.json"
+    },
+    {
+      "target": "claim_6_unreadable",
+      "route": "/app/claim/6",
+      "viewport": "mobile_390",
+      "resolution": "390x844",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 36,
+      "inapplicable": 54,
+      "file": "docs/a11y/claim_6_unreadable_mobile_390.json"
+    },
+    {
+      "target": "lodge_new",
+      "route": "/app/new",
+      "viewport": "mobile_390",
+      "resolution": "390x844",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 33,
+      "inapplicable": 57,
+      "file": "docs/a11y/lodge_new_mobile_390.json"
+    },
+    {
+      "target": "my_claims",
+      "route": "/app/mine",
+      "viewport": "mobile_390",
+      "resolution": "390x844",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 29,
+      "inapplicable": 61,
+      "file": "docs/a11y/my_claims_mobile_390.json"
+    },
+    {
+      "target": "evidence",
+      "route": "/app/evidence",
+      "viewport": "mobile_390",
+      "resolution": "390x844",
+      "violations": 0,
+      "incomplete": 1,
+      "passes": 43,
+      "inapplicable": 47,
+      "file": "docs/a11y/evidence_mobile_390.json"
+    },
+    {
+      "target": "about",
+      "route": "/app/about",
+      "viewport": "mobile_390",
+      "resolution": "390x844",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 32,
+      "inapplicable": 58,
+      "file": "docs/a11y/about_mobile_390.json"
+    },
+    {
+      "target": "claim_waiting_state",
+      "route": "/app/claim/1 (waiting)",
+      "viewport": "mobile_390",
+      "resolution": "390x844",
+      "violations": 0,
+      "incomplete": 0,
+      "passes": 36,
+      "inapplicable": 54,
+      "file": "docs/a11y/claim_waiting_state_mobile_390.json"
+    }
+  ]
+}

@@ -2,20 +2,37 @@
 
 ## Pass 1: Core Design Specification
 
-### 1. Palette
+### 1. Palette & Contrast Architecture
+
+The repository contains two cohesive visual surfaces: the **Functional Application Ledger** (`/app`) and the **Public Protocol Landing Page** (`/`). Both share a physical proofreading and legal publishing lineage:
+
+#### Application Ledger Palette (`/app`)
 Grounded strictly in physical proofreader tools (vellum proof sheets, pencil graphite, fountain pen ink, highlighter marker, red correction pen):
 
-| Token Name | Value | Role | Contrast vs Surface |
-|---|---|---|---|
-| `--color-surface` | `#f6f8fa` | Cool ledger paper ground (pale, neutral, non-cream) | Base |
-| `--color-graphite` | `#1f242d` | Deep pencil graphite for claims and body text | 13.1:1 |
-| `--color-ink` | `#1e3a8a` | Blue-black fountain pen ink for interactive chrome and links | 8.8:1 |
-| `--color-highlighter` | `#fef08a` | Translucent yellow highlighter marker background for `SUPPORTS` | 1.1:1 vs text 12.5:1 |
-| `--color-red-pen` | `#b91c1c` | Sharp red ballpoint correction pen for `CONTRADICTS` strike-through | 5.9:1 |
-| `--color-pencil` | `#525e75` | Faint secondary graphite for metadata, source hosts, and pending mark | 5.3:1 |
-| `--color-redaction` | `#27272a` | Solid charcoal redaction tape for `UNREADABLE` source line | 11.5:1 vs white text |
+| Token Name | Value | Role | Contrast vs Surface | WCAG Compliance |
+|---|---|---|---|---|
+| `--color-surface` | `#f6f8fa` | Cool ledger paper ground (pale, neutral, non-cream) | Base | - |
+| `--color-graphite` | `#1f242d` | Deep pencil graphite for claims and body text | 13.1:1 | AAA (> 7.0:1) |
+| `--color-ink` | `#1e3a8a` | Blue-black fountain pen ink for interactive chrome & links | 8.8:1 | AAA (> 7.0:1) |
+| `--color-highlighter` | `#fef08a` | Translucent yellow highlighter background for `SUPPORTS` | 12.5:1 vs text | AAA (> 7.0:1) |
+| `--color-red-pen` | `#b91c1c` | Sharp red ballpoint correction pen for `CONTRADICTS` | 5.9:1 | AA (> 4.5:1) |
+| `--color-pencil` | `#525e75` | Faint secondary graphite for metadata, hosts, pending mark | 5.3:1 | AA (> 4.5:1) |
+| `--color-redaction` | `#27272a` | Solid charcoal redaction tape for `UNREADABLE` source line | 11.5:1 vs white text | AAA (> 7.0:1) |
 
-All text combinations exceed WCAG AA 4.5:1 contrast requirements.
+#### Marketing Landing Page Palette (`/`)
+An editorial protocol introduction emphasizing typographic authority, paper texture, and structured exposition:
+
+| Element / Token | Value | Role | Contrast vs Ground | WCAG Compliance |
+|---|---|---|---|---|
+| `--landing-bg` | `#FAFAF8` | Warm off-white editorial paper ground | Base | - |
+| `--landing-ink` | `#111111` | Near-black lead headline and primary CTA fill | 18.9:1 | AAA (> 7.0:1) |
+| `--landing-card-bg` | `#FFFFFF` | Crisp white card surface for problem/protocol pillars | Base | - |
+| `--landing-card-border`| `#E5E5E0` | Subtle hairline framing rule | 1.3:1 (non-text) | Decorative rule |
+| `--landing-text-sub` | `#4B5563` | Balanced charcoal editorial subtext and card body | 7.4:1 | AAA (> 7.0:1) |
+| `--landing-meta` | `#6B7280` | Quiet metadata tags and telemetry counters | 4.8:1 | AA (> 4.5:1) |
+| `--landing-cta-text` | `#FFFFFF` | Crisp white label on near-black `#111111` CTA pill | 18.9:1 | AAA (> 7.0:1) |
+
+All text combinations across both surfaces strictly exceed the WCAG AA 4.5:1 threshold. Zero CSS gradients exist on either surface.
 
 ### 2. Typography
 Self-hosted through `@fontsource` packages:
@@ -158,30 +175,33 @@ Motion: When a verdict arrives, the mark transitions in once. `prefers-reduced-m
 
 ---
 
-## Pass 2: Review Against Generic Defaults & Revisions
+## Pass 2: Review Against Generic Defaults & Surface Differentiation
 
-We systematically examined the specification against the banned clichés in the prompt:
+The repository separates the **Functional Application** (`/app`) from the **Public Marketing Landing** (`/`), maintaining visual kinship while tailoring each surface to its distinct functional role:
 
-| Default Cliché / Anti-Pattern | Audit Check | Plan Decision & Rationale |
-|---|---|---|
-| **Warm cream background + serif display + terracotta** | Avoided | Surface is `#f6f8fa` (crisp, cold-neutral proofing paper), not cream/sepia. Primary interactive ink is `#1e3a8a` (blue-black fountain pen), not terracotta or rust. |
-| **Near-black background + acid green/vermilion** | Avoided | Default theme is high-contrast light mode with natural paper ground. No dark cyberpunk aesthetic. |
-| **Broadsheet layout with hairline rules & 0 radius** | Avoided | Not imitating Victorian broadsheets. Clean contemporary margins, `4px` subtle radius on marks and inputs, fluid typography. |
-| **SaaS-card kit (rounded cards, soft shadow, gradients)** | Avoided | Zero card containers. Claims are formatted as running prose paragraphs with margin notes separated by whitespace and clean border rules. |
-| **Template chrome (tracked ALL-CAPS eyebrows, middle dots)** | Avoided | All titles and labels use sentence case. No `L A T E S T  U P D A T E` tracking. No floating middle-dot separators (`•`). |
-| **"WORD - fragment" labels & dangling arrows** | Avoided | Links and buttons have clean, actionable sentence-case copy ("Judge this claim", "View record"), without generic `->` suffix spam. |
-| **Purple/blue gradients & glass blur panels** | Avoided | Zero CSS gradients. Zero `backdrop-filter: blur`. Flat, honest surface rendering. |
-| **Three-icon feature row & stock illustrations** | Avoided | No feature icon grids. Explanations use concise, reasoned paragraphs. |
-| **Emoji & external icon kits** | Avoided | Zero emoji in UI. Zero FontAwesome/Lucide dependencies. Hand-crafted 2 SVG icons for specific actions (copy icon, external link icon). |
-| **Accenting one word in a headline** | Avoided | Headlines are uniform Newsreader/Plus Jakarta Sans weights without colored single-word emphasis. |
+| Default Cliché / Anti-Pattern | Status | Functional App (`/app`) Implementation | Marketing Landing (`/`) Implementation |
+|---|---|---|---|
+| **Warm cream background + serif display + terracotta** | Avoided | Cold ledger paper (`#f6f8fa`), blue-black ink (`#1e3a8a`). | Warm off-white paper (`#FAFAF8`), dark ink (`#111111`). No terracotta/rust on either. |
+| **Near-black background + acid green/vermilion** | Avoided | Light-mode proofing sheet. Zero cyberpunk dark theme. | Light-mode paper ground. Zero dark mode. |
+| **Broadsheet layout with hairline rules & 0 radius** | Avoided | Contemporary spacing, `4px` subtle radius on marks/inputs. | Contemporary spacing, `8px`–`12px` card/button radii. |
+| **SaaS-card kit (rounded cards, soft shadow, gradients)** | Differentiated | **Zero card containers**. Claims are running prose with margin notes. Zero gradients. | Uses white card modules (`#FFFFFF`, border `#E5E5E0`, subtle shadow) for protocol pillars. **Zero CSS gradients**. |
+| **Template chrome (tracked ALL-CAPS eyebrows, middle dots)** | Differentiated | All labels use sentence case. Zero tracking. | Quiet category kicker (`EVIDENCE INTEGRITY PROTOCOL`). Zero floating middle dots. |
+| **"WORD - fragment" labels & dangling arrows** | Avoided | Actionable sentence-case labels ("Judge this claim"). | Clear action copy ("Launch App", "How it works"). |
+| **Purple/blue gradients & glass blur panels** | Differentiated | **Zero CSS gradients**. **Zero backdrop-filter blur**. | **Zero CSS gradients**. Sticky header uses subtle `backdrop-filter: blur(8px)` (1 occurrence). |
+| **Three-icon feature row & stock illustrations** | Avoided | Zero feature icon grids. Explanations use prose. | Hand-crafted SVG `EvidenceFlow` animation showing validator topology. No stock illustrations. |
+| **Emoji & external icon kits** | Avoided | Zero emoji in UI. Hand-crafted inline SVG icons. | Zero emoji. Hand-crafted inline SVGs. |
+| **Accenting one word in a headline** | Avoided | Uniform Newsreader/Plus Jakarta Sans weights. | Uniform Newsreader serif weights without rainbow highlights. |
 
 ---
 
 ## Pass 3: Post-Implementation Design Critique Record
 
 ### 1. Screenshot Review (1280px Desktop & 390px Mobile)
-Captured across all 7 routes in incognito mode with no wallet extension connected:
-- **Home (`home_desktop_1280.png`, `home_mobile_390.png`)**:
+Captured across all production routes in incognito mode with no wallet extension connected:
+- **Landing Page (`landing_desktop_1280.png`, `landing_mobile_390.png`)**:
+  - *Desktop (1280px)*: Asymmetrical layout balancing the interactive `EvidenceFlow` network visualization on the left against the bold editorial headline ("Evidence deserves a verdict.") and near-black `#111111` CTA buttons on the right. Below the fold, sections scroll smoothly into view: The Problem, How It Works (five steps), Interactive Verification Demo, Protocol Principles, and On-Chain Provenance.
+  - *Mobile (390px)*: The Evidence Flow visualization stacks gracefully above the primary headline and action CTAs. Card grids collapse cleanly into single-column vertical flows with touch-friendly tap targets.
+- **Application Home Ledger (`home_desktop_1280.png`, `home_mobile_390.png`)**:
   - The proofreading claim ledger renders claims directly with their authentic proofreader marks (yellow highlighter for `SUPPORTS`, strike-through for `CONTRADICTS`, dotted underline with superscript `[not addressed]` for `NOT_ADDRESSED`, and solid charcoal redaction tape for `UNREADABLE`).
   - The right-hand margin column maintains quiet, balanced metadata (host domain, attempt counts, verdict label) on desktop and folds cleanly underneath each claim on 390px mobile.
 - **Claim Detail (`claim_1_desktop_1280.png`, `claim_8_desktop_1280.png`, `claim_1_mobile_390.png`, `claim_8_mobile_390.png`)**:

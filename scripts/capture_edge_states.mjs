@@ -53,6 +53,7 @@ async function run() {
   results.push({
     state: '1. Non-existent claim ID (/app/claim/9999)',
     file: 'docs/screenshots/edge_states/edge_1_nonexistent_id_9999.png',
+    dataSource: 'Real on-chain read: queried get_claim("9999") on contract 0x58aDf2Fd...; contract returned empty string "" indicating non-existent claim.',
     timestamp: new Date().toISOString(),
     domSummary: dom1.trim(),
   });
@@ -69,6 +70,7 @@ async function run() {
   results.push({
     state: '2. Malformed ID string (/app/claim/abc)',
     file: 'docs/screenshots/edge_states/edge_2_malformed_id_abc.png',
+    dataSource: 'Client-side validation: client intercepted non-numeric ID "abc" via regex /^\\d+$/; did not call RPC. Displayed "That is not a valid claim number.".',
     timestamp: new Date().toISOString(),
     domSummary: dom2.trim(),
   });
@@ -88,12 +90,13 @@ async function run() {
   results.push({
     state: '4. UNREADABLE claim with attempts < 3 (/app/claim/6, actual on-chain state)',
     file: 'docs/screenshots/edge_states/edge_4_unreadable_attempts_under_3.png',
+    dataSource: 'Real on-chain state: queried Claim 6 on contract 0x58aDf2Fd...; returned attempts: 2, verdict: "UNREADABLE", allowing retry attempt 3 of 3.',
     timestamp: new Date().toISOString(),
     domSummary: dom4.trim(),
   });
 
   // 3. Pending Claim (Lodged, not yet judged -> ruling is empty string)
-  console.log('\n--- State 3: Pending Claim (Lodged, no ruling yet) ---');
+  console.log('\n--- State 3: Pending Claim (Mocked ruling: empty string) ---');
   await page.setRequestInterception(true);
   const interceptPending = (req) => {
     if (req.method() === 'OPTIONS') {
@@ -118,7 +121,7 @@ async function run() {
   page.on('request', interceptPending);
   await page.goto(`${baseUrl}/claim/6`, { waitUntil: 'domcontentloaded', timeout: 30000 });
   await waitForLoaded();
-  const file3 = path.join(outDir, 'edge_3_pending_claim_awaiting_judgment.png');
+  const file3 = path.join(outDir, 'edge_3_pending_claim_awaiting_judgment_mocked.png');
   await page.screenshot({ path: file3 });
   const dom3 = await page.evaluate(() => {
     const marked = document.querySelector('.marked-claim-pending')?.innerText || '';
@@ -128,7 +131,8 @@ async function run() {
   });
   results.push({
     state: '3. Pending claim awaiting judgment',
-    file: 'docs/screenshots/edge_states/edge_3_pending_claim_awaiting_judgment.png',
+    file: 'docs/screenshots/edge_states/edge_3_pending_claim_awaiting_judgment_mocked.png',
+    dataSource: 'Mocked RPC response: intercepted get_ruling for Claim 6 (claim: "Project Nova announced a new quantum proof validation layer in October 2026.", URL: "https://raw.githubusercontent.com/huzyow155/citation-court-genlayer/main/fixtures/not_found_404.md", actual on-chain verdict: UNREADABLE, attempts: 2); returned empty string "" to simulate newly-lodged unjudged state.',
     timestamp: new Date().toISOString(),
     domSummary: dom3.trim(),
   });
@@ -136,7 +140,7 @@ async function run() {
   await page.setRequestInterception(false);
 
   // 5. UNREADABLE claim with attempts >= 3 (Attempt limit reached)
-  console.log('\n--- State 5: UNREADABLE claim with attempts >= 3 ---');
+  console.log('\n--- State 5: UNREADABLE claim with attempts >= 3 (Mocked ruling: attempts=3) ---');
   await page.setRequestInterception(true);
   const interceptLimit = (req) => {
     if (req.method() === 'OPTIONS') {
@@ -161,7 +165,7 @@ async function run() {
   page.on('request', interceptLimit);
   await page.goto(`${baseUrl}/claim/6`, { waitUntil: 'domcontentloaded', timeout: 30000 });
   await waitForLoaded();
-  const file5 = path.join(outDir, 'edge_5_unreadable_attempts_limit_reached.png');
+  const file5 = path.join(outDir, 'edge_5_unreadable_attempts_limit_reached_mocked.png');
   await page.screenshot({ path: file5 });
   const dom5 = await page.evaluate(() => {
     const callout = document.querySelector('.unreadable-callout-bar')?.innerText || '';
@@ -170,7 +174,8 @@ async function run() {
   });
   results.push({
     state: '5. UNREADABLE claim with 3/3 attempts exhausted',
-    file: 'docs/screenshots/edge_states/edge_5_unreadable_attempts_limit_reached.png',
+    file: 'docs/screenshots/edge_states/edge_5_unreadable_attempts_limit_reached_mocked.png',
+    dataSource: 'Mocked RPC response: intercepted get_ruling for Claim 6 (actual on-chain state has attempts: 2); returned JSON payload with attempts: 3 and verdict: UNREADABLE to simulate attempt limit reached.',
     timestamp: new Date().toISOString(),
     domSummary: dom5.trim(),
   });
@@ -198,6 +203,7 @@ async function run() {
   results.push({
     state: '6. Network failure / Unreachable RPC endpoint',
     file: 'docs/screenshots/edge_states/edge_6_network_error_rpc_unreachable.png',
+    dataSource: 'Simulated network outage: intercepted browser network request to studio.genlayer.com and aborted request with connection failure.',
     timestamp: new Date().toISOString(),
     domSummary: dom6.trim(),
   });
@@ -239,6 +245,7 @@ async function run() {
   results.push({
     state: '7. Contract address not found on chain',
     file: 'docs/screenshots/edge_states/edge_7_contract_not_found.png',
+    dataSource: 'Simulated contract missing: intercepted RPC request to studio.genlayer.com and returned JSON-RPC error code -32000 indicating contract address not deployed (e.g., environment reset).',
     timestamp: new Date().toISOString(),
     domSummary: dom7.trim(),
   });

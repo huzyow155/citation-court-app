@@ -83,6 +83,25 @@ export const About: React.FC = () => {
         </div>
       </section>
 
+      {/* On-Chain Record & Claims History */}
+      <section className="about-section">
+        <h2 className="section-title">On-Chain Record & Claims History (Claims 1–10)</h2>
+        <p>
+          The smart contract storage currently records 10 sequential claims evaluated across 11 multi-validator consensus transactions:
+        </p>
+        <ul className="bullet-list">
+          <li>
+            <strong>Claims 1 through 8 (Benchmark Reference Cases A–H)</strong>: Seeded during initial contract deployment and verification. They systematically exercise every consensus branch: <code>SUPPORTS</code> (Case A, H), <code>CONTRADICTS</code> (Case B), <code>NOT_ADDRESSED</code> (Case C, D near-miss, E prompt injection), and <code>UNREADABLE</code> (Case F HTTP 404, Case G short page).
+          </li>
+          <li>
+            <strong>Claim 9 (Frontend Integration E2E Test)</strong>: Lodged and judged by the dApp engineering harness using a throwaway key (<code>0x09F27E9a83B3831AcB0f9e3C6418386348f9d3bC</code>) via <code>scripts/probe_e2e_write.mjs</code>. Created to test live Studionet write execution and receipt polling prior to production release. Assertion tested quarterly revenue against GitHub raw fixture, finalized as <code>SUPPORTS</code>.
+          </li>
+          <li>
+            <strong>Claim 10 (Independent User / Tester Verification)</strong>: Lodged and judged by external address <code>0xEC61D374C70dd208890667b227666C0673090264</code>. Created to test verification against a live Wikipedia article (<code>https://en.wikipedia.org/wiki/Earth</code>) asserting <em>&ldquo;Earth is the third planet from the Sun and the only astronomical object known to harbor life.&rdquo;</em>, finalized as <code>SUPPORTS</code> on first attempt.
+          </li>
+        </ul>
+      </section>
+
       {/* Contract Reference */}
       <section className="about-section">
         <h2 className="section-title">Smart Contract Specification</h2>

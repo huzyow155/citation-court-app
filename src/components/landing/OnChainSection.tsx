@@ -17,7 +17,7 @@ export const OnChainSection: React.FC = () => {
         </div>
 
         {/* Verifiable Pipeline Diagram */}
-        <div className="cc-chain-pipeline-bar" aria-label="Verifiable Pipeline Sequence">
+        <div className="cc-chain-pipeline-bar" role="region" aria-label="Verifiable Pipeline Sequence">
           <div className="cc-pipeline-node">
             <span className="cc-node-step">01</span>
             <span className="cc-node-name">CLAIM</span>

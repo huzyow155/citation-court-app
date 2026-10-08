@@ -212,7 +212,7 @@ export const LodgeClaim: React.FC = () => {
                 <p className="waiting-time">Elapsed time: {elapsedSec}s</p>
                 {elapsedSec > 15 && (
                   <p className="waiting-longer-notice">
-                    Still waiting for transaction confirmation on GenLayer Studionet. Validator consensus is in progress...
+                    Waiting for the validators to agree. This transaction is not confirmed yet.
                   </p>
                 )}
                 {activeTxHash && (

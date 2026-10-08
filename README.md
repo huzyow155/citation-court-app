@@ -27,7 +27,7 @@ Citation Court provides a decentralized verification flow on GenLayer:
 4. **Equivalence Consensus**: Independent LLMs run by validators evaluate semantic alignment. If a majority agrees, the verdict is recorded on-chain.
 5. **No Wallet Barrier for Readers**: Anyone can browse claims, rulings, and consensus evidence without connecting a wallet. Submitting or judging claims requires an EIP-1193 browser wallet (such as MetaMask; note that actual in-browser wallet interaction has not been tested end-to-end, writes were tested via Node scripts with throwaway keys).
 
-The on-chain store contains 8 baseline reference runs (Claims 1 through 8, representing test Cases A to H); claims after that are test or user-lodged, notably Claim 9 which is the dApp E2E write test run (`"Project Nova quarterly revenue reached $14.2 million representing an increase of 42 percent."` against `supports.md`, verdict: `SUPPORTS`) and Claim 10 (`"Earth is the third planet from the Sun and the only astronomical object known to harbor life."`, verdict: `SUPPORTS`). The current on-chain tally is 10 claims registered across 11 validator evaluations (`supports: 4`, `contradicts: 2`, `not_addressed: 2`, `unreadable: 3`).
+The on-chain store contains 8 baseline reference runs (Claims 1 through 8, representing test Cases A to H); claims after that are test or user-lodged: Claim 9 is the dApp E2E integration test run lodged and judged by the developer test harness using a throwaway key (`0x09F27E9a83B3831AcB0f9e3C6418386348f9d3bC`) to verify write transactions and receipt polling before release (`"Project Nova quarterly revenue reached $14.2 million representing an increase of 42 percent."` against `supports.md`, verdict: `SUPPORTS`), and Claim 10 is an independent user / tester verification run by address `0xEC61D374C70dd208890667b227666C0673090264` testing citation grounding on Wikipedia (`"Earth is the third planet from the Sun and the only astronomical object known to harbor life."` against `https://en.wikipedia.org/wiki/Earth`, verdict: `SUPPORTS`). The current on-chain tally is 10 claims registered across 11 validator evaluations (`supports: 4`, `contradicts: 2`, `not_addressed: 2`, `unreadable: 3`).
 
 ---
 
@@ -102,6 +102,7 @@ GenLayer periodically resets Studionet state. When this occurs:
 - [`docs/TROUBLESHOOTING.md`](./docs/TROUBLESHOOTING.md): Network switching, zero-balance gas behavior, consensus timeouts, and reload resumption.
 - [`docs/SDK_NOTES.md`](./docs/SDK_NOTES.md): Technical findings on `genlayer-js@1.1.8`, CORS origin reflections, and receipt triples.
 - [`docs/screenshots/`](./docs/screenshots/): 16 total screenshots in `docs/screenshots/` (14 incognito screenshots of all 7 routes without wallet at desktop 1280px and mobile 390px, plus 2 connect modal screenshots labeled mock provider [`connect_modal_mock_provider_desktop_1280.png`, `connect_modal_mock_provider_mobile_390.png`] captured by injecting simulated EIP-6963 provider announcements in headless Chrome). Routes covered: `/`, `/claim/1`, `/claim/8`, `/new`, `/mine`, `/evidence`, `/about`.
+- [`docs/screenshots/edge_states/`](./docs/screenshots/edge_states/): 7 boundary edge state captures with full audit metadata in [`edge_states_summary.json`](./docs/screenshots/edge_states/edge_states_summary.json). Includes on-chain reads (Edge 1 non-existent `#9999`, Edge 4 Claim 6 `UNREADABLE` 2/3), client-side input validation (Edge 2 `#abc` showing "That is not a valid claim number" without calling RPC), simulated technical boundaries (Edge 6 unreachable RPC, Edge 7 un-deployed contract address), and mocked responses explicitly labeled with the `_mocked` suffix (Edge 3 pending claim `edge_3_pending_claim_awaiting_judgment_mocked.png`, Edge 5 exhausted attempts `edge_5_unreadable_attempts_limit_reached_mocked.png`).
 
 ---
 
@@ -120,7 +121,7 @@ GenLayer periodically resets Studionet state. When this occurs:
 
 ### Unverified Items
 - **In-Browser Wallet Extensions**: Automated tests and screenshot captures ran in headless Chrome with a simulated mock provider for connect modal screenshots. Transaction write flows were confirmed on Studionet via Node scripts using locally generated throwaway keys. In-browser extension GUIs (such as MetaMask) have not been tested end-to-end.
-- **Alternative Browsers and Wallets**: Tested exclusively in headless Chrome. Other browsers (such as Firefox) and third-party wallet extensions (such as Rabby) have not been tested.
+- **Alternative Browsers and Wallets**: Headless Chrome was run locally; CI runs unit tests and a build. Other browsers (such as Firefox) and third-party wallet extensions (such as Rabby) have not been tested.
 
 ---
 

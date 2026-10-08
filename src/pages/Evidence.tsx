@@ -127,18 +127,32 @@ export const Evidence: React.FC = () => {
             </thead>
             <tbody>
               <tr>
-                <td><strong>Lodge Transactions</strong> (contract writes)</td>
-                <td>2 runs</td>
-                <td><strong>8.56 s</strong></td>
-                <td>8.44 s – 8.68 s</td>
-                <td>8 – 10 s (longer notice at &gt;9 s)</td>
+                <td><strong>Successful Lodge Write</strong> (Claim 9)</td>
+                <td>1 run</td>
+                <td><strong>8.68 s</strong></td>
+                <td>8.68 s</td>
+                <td>8 – 10 s</td>
               </tr>
               <tr>
-                <td><strong>Full Consensus LLM Judgments</strong> (Runs A–E, H, and Claim 9)</td>
+                <td><strong>Deliberate Failing Write</strong> (sub-20 character reject)</td>
+                <td>1 run</td>
+                <td><strong>8.44 s</strong></td>
+                <td>8.44 s</td>
+                <td>8 – 10 s</td>
+              </tr>
+              <tr>
+                <td><strong>Baseline LLM Consensus Judgments</strong> (Cases A–E, H)</td>
+                <td>6 runs</td>
+                <td><strong>14.79 s</strong></td>
+                <td>12.06 s – 15.52 s</td>
+                <td>15 – 25 s</td>
+              </tr>
+              <tr>
+                <td><strong>All LLM Consensus Judgments</strong> (Cases A–E, H, and Claim 9)</td>
                 <td>7 runs</td>
                 <td><strong>16.30 s</strong></td>
                 <td>12.06 s – 25.35 s</td>
-                <td>15 – 28 s (longer notice at &gt;26 s)</td>
+                <td>15 – 28 s</td>
               </tr>
               <tr>
                 <td><strong>Fast UNREADABLE Path</strong> (Runs F1, F2, G)</td>
@@ -148,11 +162,11 @@ export const Evidence: React.FC = () => {
                 <td>10 – 15 s</td>
               </tr>
               <tr>
-                <td><strong>All Measured Judgments</strong> (Claims 1–8 and Claim 9)</td>
-                <td>9 runs</td>
-                <td><strong>15.07 s</strong></td>
-                <td>9.42 s – 25.35 s</td>
-                <td>Threshold: &gt;26 s</td>
+                <td><strong>All 10 Measured Judgments</strong> (Cases A–H + Claim 9)</td>
+                <td>10 runs</td>
+                <td><strong>14.45 s</strong></td>
+                <td>8.85 s – 25.35 s</td>
+                <td>30 s (timeout budget)</td>
               </tr>
             </tbody>
           </table>
@@ -187,7 +201,7 @@ export const Evidence: React.FC = () => {
       <section className="evidence-section">
         <h2 className="section-title">Reference Case Runs (Claims 1 through 8)</h2>
         <p className="section-intro">
-          8 reference runs; claims after that are test or user-lodged (such as Claim 9, the dApp E2E test run). Verified against on-chain contract state at <code>{evidenceData.verifiedAt}</code>:
+          8 benchmark reference runs (Claims 1 through 8); subsequent claims are automated test or user-lodged runs: Claim 9 (dApp integration E2E test by developer account using throwaway keys) and Claim 10 (independent user test verifying Wikipedia Earth citation). Verified against on-chain contract state at <code>{evidenceData.verifiedAt}</code>:
         </p>
 
         <div className="reference-cases-list">

@@ -2,43 +2,50 @@
   {
     "state": "1. Non-existent claim ID (/app/claim/9999)",
     "file": "docs/screenshots/edge_states/edge_1_nonexistent_id_9999.png",
-    "timestamp": "2026-10-07T23:03:14.329Z",
+    "dataSource": "Real on-chain read: queried get_claim(\"9999\") on contract 0x58aDf2Fd...; contract returned empty string \"\" indicating non-existent claim.",
+    "timestamp": "2026-10-07T23:56:29.424Z",
     "domSummary": "Notice\n\nClaim #9999 does not exist on-chain."
   },
   {
     "state": "2. Malformed ID string (/app/claim/abc)",
     "file": "docs/screenshots/edge_states/edge_2_malformed_id_abc.png",
-    "timestamp": "2026-10-07T23:03:16.381Z",
-    "domSummary": "Notice\n\nClaim #abc does not exist on-chain."
+    "dataSource": "Client-side validation: client intercepted non-numeric ID \"abc\" via regex /^\\d+$/; did not call RPC. Displayed \"That is not a valid claim number.\".",
+    "timestamp": "2026-10-07T23:56:30.158Z",
+    "domSummary": "Notice\n\nThat is not a valid claim number."
   },
   {
     "state": "4. UNREADABLE claim with attempts < 3 (/app/claim/6, actual on-chain state)",
     "file": "docs/screenshots/edge_states/edge_4_unreadable_attempts_under_3.png",
-    "timestamp": "2026-10-07T23:03:19.780Z",
+    "dataSource": "Real on-chain state: queried Claim 6 on contract 0x58aDf2Fd...; returned attempts: 2, verdict: \"UNREADABLE\", allowing retry attempt 3 of 3.",
+    "timestamp": "2026-10-07T23:56:33.534Z",
     "domSummary": "Callout: \"couldn't read the page\nIndependent validators could not fetch readable text from this URL (e.g. HTTP 404, paywall, or client-side rendering).\"\nInstruction: \"Previous evaluation was UNREADABLE. You may re-judge this claim (attempt 3 of 3).\"\nButton: \"Connect wallet to judge\""
   },
   {
     "state": "3. Pending claim awaiting judgment",
-    "file": "docs/screenshots/edge_states/edge_3_pending_claim_awaiting_judgment.png",
-    "timestamp": "2026-10-07T23:03:21.845Z",
+    "file": "docs/screenshots/edge_states/edge_3_pending_claim_awaiting_judgment_mocked.png",
+    "dataSource": "Mocked RPC response: intercepted get_ruling for Claim 6 (claim: \"Project Nova announced a new quantum proof validation layer in October 2026.\", URL: \"https://raw.githubusercontent.com/huzyow155/citation-court-genlayer/main/fixtures/not_found_404.md\", actual on-chain verdict: UNREADABLE, attempts: 2); returned empty string \"\" to simulate newly-lodged unjudged state.",
+    "timestamp": "2026-10-07T23:56:35.624Z",
     "domSummary": "MarkedText: \"...\"\nInstruction: \"This claim has been lodged but not yet evaluated by validators.\"\nButton: \"Connect wallet to judge\""
   },
   {
     "state": "5. UNREADABLE claim with 3/3 attempts exhausted",
-    "file": "docs/screenshots/edge_states/edge_5_unreadable_attempts_limit_reached.png",
-    "timestamp": "2026-10-07T23:03:24.015Z",
+    "file": "docs/screenshots/edge_states/edge_5_unreadable_attempts_limit_reached_mocked.png",
+    "dataSource": "Mocked RPC response: intercepted get_ruling for Claim 6 (actual on-chain state has attempts: 2); returned JSON payload with attempts: 3 and verdict: UNREADABLE to simulate attempt limit reached.",
+    "timestamp": "2026-10-07T23:56:37.686Z",
     "domSummary": "Callout: \"couldn't read the page\nIndependent validators could not fetch readable text from this URL (e.g. HTTP 404, paywall, or client-side rendering).\"\nLimitBox: \"Attempt limit of 3 reached. No further evaluation attempts can be executed for this claim.\""
   },
   {
     "state": "6. Network failure / Unreachable RPC endpoint",
     "file": "docs/screenshots/edge_states/edge_6_network_error_rpc_unreachable.png",
-    "timestamp": "2026-10-07T23:03:24.773Z",
-    "domSummary": "Notice\n\nFailed to retrieve claim #1: An unknown RPC error occurred. Details: Failed to fetch Version: viem@2.57.3"
+    "dataSource": "Simulated network outage: intercepted browser network request to studio.genlayer.com and aborted request with connection failure.",
+    "timestamp": "2026-10-07T23:56:38.432Z",
+    "domSummary": "Notice\n\nUnable to connect to GenLayer Studionet RPC endpoint. Please check your network connection or try again shortly.\n\nTechnical error details"
   },
   {
     "state": "7. Contract address not found on chain",
     "file": "docs/screenshots/edge_states/edge_7_contract_not_found.png",
-    "timestamp": "2026-10-07T23:03:25.507Z",
-    "domSummary": "Notice\n\nFailed to retrieve claim #1: Missing or invalid parameters. Double check you have provided the correct parameters. Details: Contract 0x0000000000000000000000000000000000000000 not deployed or found on Studionet Version: viem@2.57.3"
+    "dataSource": "Simulated contract missing: intercepted RPC request to studio.genlayer.com and returned JSON-RPC error code -32000 indicating contract address not deployed (e.g., environment reset).",
+    "timestamp": "2026-10-07T23:56:39.161Z",
+    "domSummary": "Notice\n\nSmart contract not found on GenLayer Studionet. Studionet state may have been reset. Please verify the contract address in your environment (see README section 4).\n\nTechnical error details"
   }
 ]

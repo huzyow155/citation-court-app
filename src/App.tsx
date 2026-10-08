@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { WalletProvider } from './context/WalletContext';
 import { Navbar } from './components/Navbar';
 import { LandingPage } from './components/landing/LandingPage';
@@ -28,6 +28,11 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 };
 
+const ClaimRedirect: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  return <Navigate to={`/app/claim/${id || ''}`} replace />;
+};
+
 export const App: React.FC = () => {
   return (
     <WalletProvider>
@@ -44,12 +49,12 @@ export const App: React.FC = () => {
           <Route path="/app/evidence" element={<AppLayout><Evidence /></AppLayout>} />
           <Route path="/app/about" element={<AppLayout><About /></AppLayout>} />
 
-          {/* Functional Application Routes Preserved */}
-          <Route path="/claim/:id" element={<AppLayout><ClaimDetail /></AppLayout>} />
-          <Route path="/new" element={<AppLayout><LodgeClaim /></AppLayout>} />
-          <Route path="/mine" element={<AppLayout><MyClaims /></AppLayout>} />
-          <Route path="/evidence" element={<AppLayout><Evidence /></AppLayout>} />
-          <Route path="/about" element={<AppLayout><About /></AppLayout>} />
+          {/* Legacy application routes canonically redirected to /app/... */}
+          <Route path="/claim/:id" element={<ClaimRedirect />} />
+          <Route path="/new" element={<Navigate to="/app/new" replace />} />
+          <Route path="/mine" element={<Navigate to="/app/mine" replace />} />
+          <Route path="/evidence" element={<Navigate to="/app/evidence" replace />} />
+          <Route path="/about" element={<Navigate to="/app/about" replace />} />
 
           {/* Fallback */}
           <Route path="*" element={<Navigate to="/" replace />} />

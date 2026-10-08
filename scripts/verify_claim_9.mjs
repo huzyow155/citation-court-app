@@ -1,6 +1,5 @@
 import { createClient } from 'genlayer-js';
 import { studionet } from 'genlayer-js/chains';
-import fs from 'fs';
 
 const client = createClient({ chain: studionet });
 const CONTRACT_ADDRESS = '0x58aDf2Fd47dD939623BFd66929ec26117fb8CFa5';

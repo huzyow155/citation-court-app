@@ -17,7 +17,7 @@ export const ClaimDetail: React.FC = () => {
   const [claim, setClaim] = useState<Claim | null>(null);
   const [ruling, setRuling] = useState<Ruling | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<{ message: string; rawError?: string } | null>(null);
 
   // Write / Judging state
   const [isJudging, setIsJudging] = useState(false);
@@ -38,17 +38,51 @@ export const ClaimDetail: React.FC = () => {
     async (claimId: string) => {
       setIsLoading(true);
       setError(null);
+
+      // Client-side validation: must be a positive integer without contacting RPC
+      if (!/^\d+$/.test(claimId)) {
+        setError({ message: 'That is not a valid claim number.' });
+        setIsLoading(false);
+        return;
+      }
+
       try {
         const c = await getClaim(readOnlyClient, claimId);
         if (!c) {
-          setError(`Claim #${claimId} does not exist on-chain.`);
+          setError({ message: `Claim #${claimId} does not exist on-chain.` });
           return;
         }
         setClaim(c);
         const r = await getRuling(readOnlyClient, claimId);
         setRuling(r);
       } catch (err: any) {
-        setError(`Failed to retrieve claim #${claimId}: ${err.message}`);
+        const msg = String(err?.message || err);
+        if (
+          msg.includes('not deployed') ||
+          msg.includes('not found') ||
+          msg.includes('0x0000000000000000000000000000000000000000')
+        ) {
+          setError({
+            message:
+              'Smart contract not found on GenLayer Studionet. Studionet state may have been reset. Please verify the contract address in your environment (see README section 4).',
+            rawError: msg,
+          });
+        } else if (
+          msg.includes('Failed to fetch') ||
+          msg.includes('Network') ||
+          msg.includes('ECONNREFUSED')
+        ) {
+          setError({
+            message:
+              'Unable to connect to GenLayer Studionet RPC endpoint. Please check your network connection or try again shortly.',
+            rawError: msg,
+          });
+        } else {
+          setError({
+            message: `Failed to retrieve claim #${claimId}.`,
+            rawError: msg,
+          });
+        }
       } finally {
         setIsLoading(false);
       }
@@ -150,7 +184,7 @@ export const ClaimDetail: React.FC = () => {
     }
 
     if (!signerClient) {
-      setError('Wallet signer client is not initialized.');
+      setError({ message: 'Wallet signer client is not initialized.' });
       return;
     }
 
@@ -246,7 +280,15 @@ export const ClaimDetail: React.FC = () => {
       {error && (
         <div className="state-panel error-panel" role="alert">
           <h2 className="error-title">Notice</h2>
-          <p className="error-description">{error}</p>
+          <p className="error-description">{error.message}</p>
+          {error.rawError && (
+            <details className="raw-error-details" style={{ marginTop: '12px' }}>
+              <summary>Technical error details</summary>
+              <code style={{ display: 'block', marginTop: '6px', fontSize: '0.8125rem' }}>
+                {error.rawError}
+              </code>
+            </details>
+          )}
         </div>
       )}
 
@@ -317,15 +359,15 @@ export const ClaimDetail: React.FC = () => {
                 <div className="judging-waiting-state" role="status" aria-live="polite">
                   <div className="waiting-spinner-track" />
                   <div className="waiting-text-group">
-                    <p className="waiting-title">Evaluating claim on GenLayer Studionet...</p>
+                    <p className="waiting-title">Awaiting consensus on GenLayer Studionet...</p>
                     <p className="waiting-time">Elapsed time: {elapsedSec}s</p>
                     {elapsedSec > 30 && (
                       <p className="waiting-longer-notice">
-                        Still waiting for consensus receipt on GenLayer Studionet. Multi-node web retrieval and validator LLM evaluation are in progress...
+                        Waiting for the validators to agree. This transaction is not confirmed yet.
                       </p>
                     )}
                     <p className="waiting-subtext">
-                      Independent validators are fetching the source webpage and executing equivalence consensus.
+                      Transaction submitted to GenLayer Studionet consensus.
                     </p>
                     {activeTxHash && (
                       <div className="tx-hash-row">

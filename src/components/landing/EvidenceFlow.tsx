@@ -12,7 +12,7 @@ export const EvidenceFlow: React.FC = () => {
   }, []);
 
   return (
-    <div className="cc-evidence-flow-container" aria-label="Evidence Flow Protocol Visualization">
+    <div className="cc-evidence-flow-container" role="region" aria-label="Evidence Flow Protocol Visualization">
       {/* Top Header Annotations */}
       <div className="cc-flow-top-meta">
         <div className="cc-meta-item">

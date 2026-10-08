@@ -78,4 +78,10 @@ describe('Receipt Success Rule & Fixtures Parsing', () => {
     expect(outcome.isSuccess).toBe(false);
     expect(outcome.errorMessage).toBe('Receipt data unavailable.');
   });
+
+  it('extracts raw receipt error directly', () => {
+    const fixture = loadFixture('receipt_failing_write.json');
+    const raw = extractRawReceiptError(fixture);
+    expect(raw).toContain('claim length below minimum 20 characters');
+  });
 });
